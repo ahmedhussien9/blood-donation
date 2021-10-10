@@ -14,23 +14,34 @@ const routes: Routes = [
     component: AdminlayoutComponent,
     children: [
       {
-        path: "queue",
-        loadChildren: () => import("./modules/queue/queue.module").then((m) => m.QueueModule),
+        path: 'queue',
+        loadChildren: () =>
+          import('./modules/queue/queue.module').then((m) => m.QueueModule),
         data: {
           allowedRoles: ['EXAM_APPLICANTS'],
         },
       },
       {
-        path: "home",
-        loadChildren: () => import("./modules/reports/reports-routing.module").then(
-          (m) => m.ReportsRoutingModule
-        ),
+        path: 'campaigns',
+        loadChildren: () =>
+          import('./modules/campaigns/campaigns.module').then((m) => m.CampaignsModule),
+        data: {
+          allowedRoles: ['EXAM_APPLICANTS'],
+        },
       },
       {
-        path: "home-reports",
-        loadChildren: () => import("./modules/reports-admin/reports-admin.module").then(
-          (m) => m.ReportsAdminModule
-        ),
+        path: 'home',
+        loadChildren: () =>
+          import('./modules/reports/reports-routing.module').then(
+            (m) => m.ReportsRoutingModule
+          ),
+      },
+      {
+        path: 'home-reports',
+        loadChildren: () =>
+          import('./modules/reports-admin/reports-admin.module').then(
+            (m) => m.ReportsAdminModule
+          ),
       },
       {
         path: '',
@@ -49,5 +60,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
-
+export class AppRoutingModule {}

@@ -11,15 +11,9 @@
       <table class="table">
         <thead>
           <tr>
-            <th>id</th>
-            <th>Name</th>
-            <th>Image</th>
-            <th>ID Number</th>
-            <th>Phone</th>
-            <th>Generate Barcode</th>
-            <th>Barcode</th>
-            <th>Status</th>
+            <th>Ticket Id</th>
             <th>Action</th>
+            <th>Progress</th>
           </tr>
         </thead>
         <tbody>
@@ -37,33 +31,25 @@
             style="cursor: pointer"
           >
             <td>{{ i + 1 }}</td>
-            <td>{{ data.name }}</td>
-            <td>{{ data.emirateId }}</td>
-            <td>{{ data.mobile }}</td>
-            <td>+2010000220808</td>
             <td>
-              <button (click)="openDialogBarCode(data)" class="btn">
-                <i class="fas fa-print"></i>
-              </button>
+              <app-action-button
+                [title]="data.action"
+                [className]="data.action"
+              ></app-action-button>
             </td>
             <td>
-              <img
-                src="https://www.pngplay.com/wp-content/uploads/2/Barcode-Transparent-PNG.png"
-                height="100px"
-              />
-            </td>
-
-            <td>Pending</td>
-            <td>
-              <button mat-icon-button [matMenuTriggerFor]="menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="approveStudent(data.id)">
-                  <mat-icon>done</mat-icon>
-                  <span>{{ "Approve" | translate }}</span>
-                </button>
-              </mat-menu>
+              <ng-container *ngIf="data.progress === 'Done'">
+                <app-status-tag
+                  [className]="'done'"
+                  [name]="'Done'"
+                ></app-status-tag>
+              </ng-container>
+              <ng-container *ngIf="data.progress === 'Pending'">
+                <app-status-tag
+                  [className]="'pending'"
+                  [name]="'Pending'"
+                ></app-status-tag>
+              </ng-container>
             </td>
           </tr>
         </tbody>

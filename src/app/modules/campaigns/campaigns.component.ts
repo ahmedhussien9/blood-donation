@@ -4,16 +4,14 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { StudentI } from 'src/app/shared/models/students.model';
-import { GenerateBarcodeDialogComponent } from './components/generate-barcode-dialog/generate-barcode-dialog.component';
+import { GenerateBarcodeDialogComponent } from '../queue/components/generate-barcode-dialog/generate-barcode-dialog.component';
 
 @Component({
-  selector: 'app-queue',
-  templateUrl: './queue.component.html',
-  styleUrls: ['./queue.component.scss'],
+  selector: 'app-campaigns',
+  templateUrl: './campaigns.component.html',
+  styleUrls: ['./campaigns.component.scss'],
 })
-export class QueueComponent implements OnInit {
-  students: StudentI[];
+export class CampaignsComponent implements OnInit {
   loading: boolean = false;
   page: number = 1;
   totalItems: number;
@@ -24,26 +22,22 @@ export class QueueComponent implements OnInit {
   getRequests = [];
   mockData = [
     {
-      ticketId: 1,
-      progress: 'Done',
-      action: 'admitted',
-      donorData: {
-        name: 'Ahmed Khattab',
-        mobile: '+201000322322',
-        emirateId: '65656566565',
-        nationality: 'United Arab Emirates',
-      },
+      id: 1,
+      name: 'Saving lives together',
+      organizer: 'Hospital Ray Hope',
+      phone: '+98985656555',
+      date: '28-11-2021 to 31-12-2021',
+      description:
+        'Collecting blood for the children in the Hospitals children cancer center',
     },
     {
-      ticketId: 2,
-      progress: 'Pending',
-      action: 'proceed',
-      donorData: {
-        name: 'Mohamed Salah',
-        mobile: '+201300322322',
-        emirateId: '9835565655',
-        nationality: 'United Arab Emirates',
-      },
+      id: 1,
+      name: 'Saving lives together',
+      organizer: 'Hospital Ray Hope',
+      phone: '+98985656555',
+      date: '28-11-2021 to 31-12-2021',
+      description:
+        'Collecting blood for the children in the Hospitals children cancer center',
     },
   ];
   constructor(
@@ -67,7 +61,6 @@ export class QueueComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPage(1);
-    this.openDialogBarCode(this.mockData[0])
   }
 
   getPage(page) {
@@ -90,8 +83,8 @@ export class QueueComponent implements OnInit {
   openDialogBarCode(data) {
     const dialogRef = this.dialogRef.open(GenerateBarcodeDialogComponent, {
       maxWidth: '90%',
-      width: '700px',
-      minHeight: '300px',
+      width: '500px',
+      minHeight: '200px',
       disableClose: true,
       data: data,
     });

@@ -1,0 +1,18 @@
+p {
+    display: inline-block;
+    min-width: 80px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 1.5rem;
+    border-radius: 3px;
+}
+
+.done {
+    border: 1px solid green;
+    color: green;
+}
+
+.pending {
+    border: 1px solid red;
+    color: red;
+}

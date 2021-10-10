@@ -25,7 +25,6 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 
 // Components
 import { SubmitBtnComponent } from './components/submit-btn/submit-btn.component';
-import { CardIconListComponent } from './components/card-icon-list/card-icon-list.component';
 import { SubHeaderComponent } from './components/sub-header/sub-header.component';
 import { ButtonIconComponent } from './components/button-icon/button-icon.component';
 import { RoundButtonComponent } from './components/round-button/round-button.component';
@@ -43,6 +42,8 @@ import { UploadFileDetailsComponent } from './components/upload-file-details/upl
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ChartsModule } from 'ng2-charts';
+import { StatusTagComponent } from './components/status-tag/status-tag.component';
+import { ActionButtonComponent } from './components/action-button/action-button.component';
 
 export function CustomPaginator() {
   const customPaginatorIntl = new MatPaginatorIntl();
@@ -89,6 +90,8 @@ export function CustomPaginator() {
     SwitchBoxComponent,
     FooterComponent,
     EmptyDataComponent,
+    StatusTagComponent,
+    ActionButtonComponent
   ],
   exports: [
     FormsModule,
@@ -119,6 +122,8 @@ export function CustomPaginator() {
     SwitchBoxComponent,
     FooterComponent,
     EmptyDataComponent,
+    StatusTagComponent,
+    ActionButtonComponent
   ],
   providers: [
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
