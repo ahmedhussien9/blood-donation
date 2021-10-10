@@ -13,7 +13,7 @@ import { StudentI } from 'src/app/shared/models/students.model';
 })
 export class QueueComponent implements OnInit {
   students: StudentI[];
-  loading: boolean = true;
+  loading: boolean = false;
   page: number = 1;
   totalItems: number;
   formGroup: FormGroup;
@@ -21,6 +21,56 @@ export class QueueComponent implements OnInit {
   lang = localStorage.getItem('LOCALIZE_DEFAULT_LANGUAGE');
   selected: { startDate: Date; endDate: Date };
   getRequests = [];
+  mockData = [
+    {
+      id: 1,
+      name: 'Ahmed Khattab',
+      mobile: '+201000322322',
+      emirateId: '65656566565',
+      status: 'Done',
+      nationality: "United Arab Emirates"
+    },
+    {
+      id: 1,
+      name: 'Ahmed Khattab',
+      mobile: '+201000322322',
+      emirateId: '65656566565',
+      status: 'Done',
+      nationality: "United Arab Emirates"
+    },
+    {
+      id: 1,
+      name: 'Ahmed Khattab',
+      mobile: '+201000322322',
+      emirateId: '65656566565',
+      status: 'Done',
+      nationality: "United Arab Emirates"
+    },
+    {
+      id: 1,
+      name: 'Ahmed Khattab',
+      mobile: '+201000322322',
+      emirateId: '65656566565',
+      status: 'Done',
+      nationality: "United Arab Emirates"
+    },
+    {
+      id: 1,
+      name: 'Ahmed Khattab',
+      mobile: '+201000322322',
+      emirateId: '65656566565',
+      status: 'Done',
+      nationality: "United Arab Emirates"
+    },
+    {
+      id: 1,
+      name: 'Ahmed Khattab',
+      mobile: '+201000322322',
+      emirateId: '65656566565',
+      status: 'Done',
+      nationality: "United Arab Emirates"
+    },
+  ];
   constructor(
     @Optional() public dialogRef: MatDialog,
     private router: Router,
@@ -45,18 +95,10 @@ export class QueueComponent implements OnInit {
   }
 
   getPage(page) {
-    this.loading = true;
-    this.page = page;
-    this.formGroup.get('page').setValue(page);
+    // this.loading = true;
+    // this.page = page;
+    // this.formGroup.get('page').setValue(page);
 
-    const tickets = [
-      {
-        id:1, 
-        name: "Ahmed",
-        mobile: "+2012121121211",
-
-      }
-    ]
     // this.httpTesterService
     //   .getTesterApi(this.formGroup.value, 'true')
     //   .pipe(
@@ -88,6 +130,5 @@ export class QueueComponent implements OnInit {
     //   .subscribe();
   }
 
-  approveStudent(studentId) {
-  }
+  approveStudent(studentId) {}
 }
