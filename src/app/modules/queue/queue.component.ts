@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { StudentI } from 'src/app/shared/models/students.model';
+import { GenerateBarcodeDialogComponent } from './components/generate-barcode-dialog/generate-barcode-dialog.component';
 
 @Component({
   selector: 'app-queue',
@@ -28,7 +29,7 @@ export class QueueComponent implements OnInit {
       mobile: '+201000322322',
       emirateId: '65656566565',
       status: 'Done',
-      nationality: "United Arab Emirates"
+      nationality: 'United Arab Emirates',
     },
     {
       id: 1,
@@ -36,7 +37,7 @@ export class QueueComponent implements OnInit {
       mobile: '+201000322322',
       emirateId: '65656566565',
       status: 'Done',
-      nationality: "United Arab Emirates"
+      nationality: 'United Arab Emirates',
     },
     {
       id: 1,
@@ -44,7 +45,7 @@ export class QueueComponent implements OnInit {
       mobile: '+201000322322',
       emirateId: '65656566565',
       status: 'Done',
-      nationality: "United Arab Emirates"
+      nationality: 'United Arab Emirates',
     },
     {
       id: 1,
@@ -52,7 +53,7 @@ export class QueueComponent implements OnInit {
       mobile: '+201000322322',
       emirateId: '65656566565',
       status: 'Done',
-      nationality: "United Arab Emirates"
+      nationality: 'United Arab Emirates',
     },
     {
       id: 1,
@@ -60,7 +61,7 @@ export class QueueComponent implements OnInit {
       mobile: '+201000322322',
       emirateId: '65656566565',
       status: 'Done',
-      nationality: "United Arab Emirates"
+      nationality: 'United Arab Emirates',
     },
     {
       id: 1,
@@ -68,7 +69,7 @@ export class QueueComponent implements OnInit {
       mobile: '+201000322322',
       emirateId: '65656566565',
       status: 'Done',
-      nationality: "United Arab Emirates"
+      nationality: 'United Arab Emirates',
     },
   ];
   constructor(
@@ -98,7 +99,6 @@ export class QueueComponent implements OnInit {
     // this.loading = true;
     // this.page = page;
     // this.formGroup.get('page').setValue(page);
-
     // this.httpTesterService
     //   .getTesterApi(this.formGroup.value, 'true')
     //   .pipe(
@@ -112,22 +112,18 @@ export class QueueComponent implements OnInit {
     //   .subscribe();
   }
 
-  displayAttachments(attachments, title, image) {
-    // const dialogRef = this.dialogRef.open(AttachmentsDialogComponent, {
-    //   maxWidth: '90%',
-    //   width: '500px',
-    //   minHeight: '200px',
-    //   disableClose: true,
-    //   data: {
-    //     attachments: attachments,
-    //     title: title,
-    //     image: image,
-    //   },
-    // });
-    // dialogRef
-    //   .afterClosed()
-    //   // .pipe(takeUntil(this.$destroy))
-    //   .subscribe();
+  openDialogBarCode(data) {
+    const dialogRef = this.dialogRef.open(GenerateBarcodeDialogComponent, {
+      maxWidth: '90%',
+      width: '500px',
+      minHeight: '200px',
+      disableClose: true,
+      data: data,
+    });
+    dialogRef
+      .afterClosed()
+      // .pipe(takeUntil(this.$destroy))
+      .subscribe();
   }
 
   approveStudent(studentId) {}
