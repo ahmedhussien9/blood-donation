@@ -25,6 +25,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatStepperModule } from '@angular/material/stepper';
+import { CdkStepperModule } from '@angular/cdk/stepper';
 
 const material = [
   MatProgressBarModule,
@@ -54,6 +56,8 @@ const material = [
   MatOptionModule,
   MatSelectModule,
   MatCheckboxModule,
+  MatStepperModule,
+  CdkStepperModule,
 ];
 
 @NgModule({

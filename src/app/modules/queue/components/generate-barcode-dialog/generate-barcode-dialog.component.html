@@ -11,36 +11,86 @@
   </div>
 
   <div class="dialog__body">
-    <div class="donor-info">
-      <div class="donor-info__lable">Name :</div>
-      <div class="donor-info__value">Ahmed Khattab</div>
-    </div>
+    <mat-horizontal-stepper linear #stepper>
+      <mat-step>
+        <ng-template matStepLabel>ID CARD DATA</ng-template>
+        <div class="step-container">
+          <h6 style="margin-bottom: 1rem"><strong>ID CARD DATA</strong></h6>
+          <div class="donor-info">
+            <div class="donor-info__lable">Ticker No. :</div>
+            <div class="donor-info__value">1</div>
+          </div>
+          <div class="donor-info">
+            <div class="donor-info__lable">Name :</div>
+            <div class="donor-info__value">Ahmed Khattab</div>
+          </div>
+          <div class="donor-info">
+            <div class="donor-info__lable">Nationality:</div>
+            <div class="donor-info__value">Arab united Emirates</div>
+          </div>
+          <div class="donor-info">
+            <div class="donor-info__lable">ID Number:</div>
+            <div class="donor-info__value">9898989865655</div>
+          </div>
+        </div>
 
-    <div class="donor-info">
-      <div class="donor-info__lable">Donor Number:</div>
-      <div class="donor-info__value">#989898</div>
-    </div>
+        <button mat-button matStepperNext class="action-button">Proceed</button>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Generate Barcode </ng-template>
+        <div class="step-container">
+          <h6 style="margin-bottom: 1rem"><strong>Donor Data</strong></h6>
+          <div class="donor-info">
+            <div class="donor-info__lable">Name :</div>
+            <div class="donor-info__value">Ahmed Khattab</div>
+          </div>
 
-    <div class="donor-info">
-      <div class="donor-info__lable">ID Number:</div>
-      <div class="donor-info__value">9898989865655</div>
-    </div>
-    <div class="donor-barcode">
-      <div class="barcode-data">
-        <h6>Ahmed Khattab</h6>
-        <p>6565656565656</p>
-        <img
-          src="https://www.pngplay.com/wp-content/uploads/2/Barcode-Transparent-PNG.png"
-          height="100px"
-        />
-      </div>
-    </div>
-  </div>
+          <div class="donor-info">
+            <div class="donor-info__lable">Donor No:</div>
+            <div class="donor-info__value">#989898</div>
+          </div>
+          <div class="donor-info">
+            <div class="donor-info__lable">ID Number:</div>
+            <div class="donor-info__value">9898989865655</div>
+          </div>
+        </div>
 
-  <div class="dialog__footer">
-    <app-submit-btn
-      [title]="'Print Braclet'"
-      [loading]="false"
-    ></app-submit-btn>
+        <button mat-button matStepperNext class="action-button">
+          Generate Barcode
+        </button>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Print Brecelet</ng-template>
+        <div class="step-container">
+          <h6 style="margin-bottom: 1rem">
+            <strong>Print Donor Bracelet</strong>
+          </h6>
+          <div class="donor-barcode">
+            <div class="barcode-data">
+              <h6>Ahmed Khattab</h6>
+              <p>6565656565656</p>
+              <img
+                src="https://www.pngplay.com/wp-content/uploads/2/Barcode-Transparent-PNG.png"
+                height="100px"
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()" class="action-button">
+            Print Bracelet
+          </button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+
+    <!-- <div class="dialog__footer">
+      <app-submit-btn
+        [title]="'Print Braclet'"
+        [loading]="false"
+      ></app-submit-btn>
+    </div> -->
   </div>
 </section>

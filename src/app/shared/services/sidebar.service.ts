@@ -11,7 +11,7 @@ export interface NavItem {
   };
   children?: NavItem[];
   isExpand?: boolean;
-  roles: string[]
+  roles: string[];
 }
 
 @Injectable({
@@ -27,7 +27,7 @@ export class SidebarService {
         ar: 'المختبرين',
         en: 'Home',
       },
-      route: "dash/home-reports",
+      route: 'dash/home-reports',
       roles: [],
     },
     {
@@ -36,10 +36,19 @@ export class SidebarService {
         ar: 'المختبرين',
         en: 'Queue',
       },
-      route: "dash/queue",
+      route: 'dash/queue',
+      roles: [],
+    },
+    {
+      icon: ICONS.contract,
+      nameDictionary: {
+        ar: 'المختبرين',
+        en: 'Campaigns',
+      },
+      route: 'dash/campaigns',
       roles: [],
     },
   ];
 
-  constructor() { }
+  constructor() {}
 }
