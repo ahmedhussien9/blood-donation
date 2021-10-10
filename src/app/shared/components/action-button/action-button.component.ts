@@ -10,10 +10,10 @@ export class ActionButtonComponent implements OnInit {
   @Input() className: string | 'admitted' | 'proceed';
   @Output() isClicked = new EventEmitter();
   constructor() {}
-
   ngOnInit(): void {}
 
   isClickButton() {
+    console.log("clicked")
     this.isClicked.emit();
   }
 }

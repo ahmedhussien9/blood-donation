@@ -35,6 +35,7 @@
               <app-action-button
                 [title]="data.action"
                 [className]="data.action"
+                (isClicked)="openDialogBarCode(data)"
               ></app-action-button>
             </td>
             <td>
