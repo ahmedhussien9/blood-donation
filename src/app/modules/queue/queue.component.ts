@@ -67,7 +67,6 @@ export class QueueComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPage(1);
-    this.openDialogBarCode(this.mockData[0])
   }
 
   getPage(page) {
@@ -88,17 +87,19 @@ export class QueueComponent implements OnInit {
   }
 
   openDialogBarCode(data) {
-    const dialogRef = this.dialogRef.open(GenerateBarcodeDialogComponent, {
-      maxWidth: '90%',
-      width: '700px',
-      minHeight: '300px',
-      disableClose: true,
-      data: data,
-    });
-    dialogRef
-      .afterClosed()
-      // .pipe(takeUntil(this.$destroy))
-      .subscribe();
+    if (data.action == 'proceed') {
+      const dialogRef = this.dialogRef.open(GenerateBarcodeDialogComponent, {
+        maxWidth: '90%',
+        width: '700px',
+        minHeight: '300px',
+        disableClose: true,
+        data: data,
+      });
+      dialogRef
+        .afterClosed()
+        // .pipe(takeUntil(this.$destroy))
+        .subscribe();
+    }
   }
 
   approveStudent(studentId) {}
