@@ -62,6 +62,7 @@ export function CustomPaginator() {
     RouterModule,
     ToastrModule.forRoot(),
     MaterialImportsModule,
+    
     ScrollingModule,
     HttpClientModule,
     TranslateModule,
