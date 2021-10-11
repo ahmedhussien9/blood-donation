@@ -27,7 +27,20 @@ const routes: Routes = [
           import('./modules/campaigns/campaigns.module').then((m) => m.CampaignsModule),
         data: {
           allowedRoles: ['EXAM_APPLICANTS'],
+        }},
+        {
+        path: "doctor",
+        loadChildren: () => import("./modules/doctor/doctor.module").then((m) => m.DoctorModule),
+        data: {
+          // allowedRoles: ['EXAM_APPLICANTS'],
         },
+      },
+      
+      {
+        path: "home",
+        loadChildren: () => import("./modules/reports/reports-routing.module").then(
+          (m) => m.ReportsRoutingModule
+        ),
       },
       {
         path: 'home',
