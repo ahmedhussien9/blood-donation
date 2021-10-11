@@ -31,7 +31,7 @@ export class AdminlayoutComponent implements OnInit {
   links: NavItem[];
   subLinksIcon: string;
   dir: 'rtl' | 'ltr';
-  name = JSON.parse(localStorage.getItem("userData")).name;
+  name = JSON.parse(localStorage.getItem("userData")) && JSON.parse(localStorage.getItem("userData")).name ? JSON.parse(localStorage.getItem("userData")).name : "";
   @Select(LayoutState.getSidebarState) sideNavbar$: Observable<SideNavModel>;
   @ViewChild("menu", { static: false }) menuElRef: ElementRef;
   constructor(

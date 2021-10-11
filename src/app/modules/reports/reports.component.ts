@@ -7,7 +7,7 @@ import * as Chart from 'chart.js';
   styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent implements OnInit {
-  adminRole = JSON.parse(localStorage.getItem("userData")).roles[0];
+  adminRole = JSON.parse(localStorage.getItem("userData")) && JSON.parse(localStorage.getItem("userData")).roles[0] ? JSON.parse(localStorage.getItem("userData")).roles[0] : "";
   show = false;
   @ViewChild('donut', { static: false }) donut: ElementRef;
   @ViewChild('mychart', { static: false }) mychart: ElementRef;
