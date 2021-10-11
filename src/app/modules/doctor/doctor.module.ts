@@ -12,12 +12,13 @@ import { InfoTableComponent } from 'src/app/shared/components/infoTable/infoTabl
   declarations: [
     DoctorComponent,
     GenerateBarcodeDialogComponent,
-    InfoTableComponent
+    InfoTableComponent,
+    
   ],
   imports: [
     CommonModule,
     DoctorRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class DoctorModule { }

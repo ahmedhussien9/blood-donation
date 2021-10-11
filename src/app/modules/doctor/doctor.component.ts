@@ -72,12 +72,17 @@ export class DoctorComponent implements OnInit {
       nationality: 'United Arab Emirates'
     }
   ];
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  firstFormGroup1: FormGroup;
+  secondFormGroup2: FormGroup;
   list = [
     { key: 'Donor Name', value: 'Hammad Salem Naser' },
     { key: 'Donor ID', value: '784-1234-1234567-1' },
     { key: 'Donor Number', value: '9876623' }
   ];
-
+  
   list2 = [
     { key: 'Donor Name', value: 'Hammad Salem Naser' },
     { key: 'Donor ID', value: '784-1234-1234567-1' },

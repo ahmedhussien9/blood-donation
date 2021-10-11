@@ -141,12 +141,16 @@ table {
   }
 }
 
-.Declaration{
-
-    .signature{
+.Declaration {
+  .signature {
     display: flex;
     margin: 15px;
-    img{
-        width: 150px;
-    }}
+    img {
+      width: 150px;
+    }
+  }
+}
+
+:host ::ng-deep .stepper-tow .mat-horizontal-stepper-header-container {
+  display: none !important;
 }

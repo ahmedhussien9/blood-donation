@@ -393,3 +393,9 @@ input[type="number"] {
   background: $mainColor;
   color: #fff;
 }
+
+.d-flex-between{
+  display: flex;
+    justify-content: space-between;
+}
+
