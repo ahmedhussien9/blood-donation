@@ -1,0 +1,59 @@
+@import "~src/assets/scss/variables.scss";
+
+
+table {
+    width: 100%;
+    max-width: 600px;
+    margin: 15px 0;
+    border-radius: 8px;
+    text-transform: capitalize;
+    box-shadow: 0px 0px 12px #0000000f;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    background: #FFF;
+    border-radius: 10px;
+    border-left: 4px solid #0e3894;
+    box-sizing: border-box;
+
+    tr.table-head {
+      @media screen and (max-width: 30em) {
+        display:none;
+      }
+    }
+    .title {
+      font-weight: 600;
+    }
+    tr {
+      @media screen and (max-width: 30em) {
+        display: block;
+        //create card effect
+  //      margin-bottom: 1em;
+  //      border: 1px solid #DDD;
+      }
+    }
+    tr:nth-child(even) {
+      background: #F9F9F9;
+      @media screen and (max-width: 30em) {
+        background: #fff; 
+      }
+    }
+    tr td {
+    
+        padding: 5px;
+      vertical-align: top;
+      border: none;
+      @media screen and (max-width: 30em) {
+        //THIS SWITCHES THE TABLE CELL TO A ROW ITEM ESSENTIALLY
+        display: block;
+        width: 100%;
+      }
+    }
+    tr td:nth-child(2) {
+      @media screen and (max-width: 30em) {
+        width: 90%;
+        margin-left: 10%; 
+      }
+    }
+  }
+  

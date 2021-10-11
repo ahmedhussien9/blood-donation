@@ -348,6 +348,13 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.success-color{
+  color: $whiteColor !important;
+  background-color: $greenColor !important;;
+}
+.success-color:hover{
+  background-color: $lightGreenColor !important;;
+}
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;

@@ -1,0 +1,270 @@
+<div class="wrapper">
+  <div class="wrapper__header">
+    <h1 class="main-title">Doctor</h1>
+  </div>
+  <ng-container *ngIf="loading">
+    <app-loader
+      message="Please wait while the barcode is being scanned ..."
+    ></app-loader>
+  </ng-container>
+  <div class="step one" *ngIf="!loading ">
+    <p>Barcode Scan Data</p>
+    <app-infoTable [list]="list"></app-infoTable>
+    <app-button-icon title="Confirm" (click)="submitEvent()"></app-button-icon>
+  </div>
+  <div class="step tow" *ngIf="!loading ">
+    <p>Donor Date</p>
+    <app-infoTable [list]="list2"></app-infoTable>
+    <h3>Test Results:</h3>
+    <img
+      width="50%"
+      src="https://storage.googleapis.com/plos-corpus-prod/10.1371/journal.pone.0188066/1/pone.0188066.t001.PNG_L?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=wombat-sa%40plos-prod.iam.gserviceaccount.com%2F20211010%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20211010T175008Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=0994b63042a3e510d1e775152dd6e3d7bda907a676e91f6529f0eefefdb8c57c2b86a3b3f83b90093b880f5d92f3f38b1fb9d51b7ab4bdb65414aab6ac963066a6351dfde8b33999bc8efa2ff4075699658d07e2feb798e27420e0929f0f4d9592b54357972e2d5989ecd7b929e5081080af36f2a90cb8f2ae0618c1fe2e1e20213bca991b8c4bb9270dbb29de0f15d7180c7535eaf80888256d252df5b905f2c57b226a1167bb37e9d4b5fb054a92ebf6a04ef9393c61b72d2b66b7c683c982bbe54d3e53d7cfb203f8b3b501b633e6f11d33b03e3fb20c2c25ce007cc75cc65d165d1fa64b27108bce12e5d0dd916c953c4b6e0c62ac2eb67a115cc92c6c6b"
+    />
+    <br />
+    <app-button-icon
+      title="Review Questionnaire"
+      (click)="ReviewQuestionnaire()"
+    ></app-button-icon>
+
+    <!-- Questions section -->
+    <div class="stepper questions">
+      <div class="header">
+        <p>Questions</p>
+        <p>Personal Information</p>
+      </div>
+
+      <div class="row ">
+        <div class="col-md-4 ">
+          <app-infoTable [list]="list3"></app-infoTable>
+        </div>
+        <div class="col-md-5 offset-2 ">
+          <app-infoTable [list]="list2"></app-infoTable>
+        </div>
+        <div class="col-12 text-end">
+          <app-button-icon
+            title="Next"
+            (click)="nextStep()"
+            customClass="success-color"
+          ></app-button-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Health section -->
+    <div class="stepper Health">
+      <div class="header">
+        <p>Questions</p>
+        <p>Health Assessment</p>
+      </div>
+      <div class="row ">
+        <h5 class="section-title">
+          Please tick the appropriate answer to each question:
+        </h5>
+      </div>
+
+      <div class="row " *ngFor="let question of questionList; let i = index">
+        <div class="col-md-6 ">
+          <label id="example-radio-group-label"
+            >{{ i + 1 }} -{{ question.name }}</label
+          >
+        </div>
+        <div class="col-md-5 offset-1 ">
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button
+              *ngFor="let option of question.options"
+              class="option"
+              [value]="option.value"
+              >{{ option.name }}</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div class="row ">
+        <div class="col-12 text-end">
+          <app-button-icon
+            title="Next"
+            (click)="nextStep()"
+            customClass="success-color"
+          ></app-button-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Health section -->
+    <div class="stepper Risk">
+      <div class="header">
+        <p>Questions</p>
+        <p>Risk Assessment</p>
+      </div>
+      <div class="row ">
+        <h5 class="section-title">
+          Please tick the appropriate answer to each question:
+        </h5>
+      </div>
+
+      <div class="row " *ngFor="let question of questionList; let i = index">
+        <div class="col-md-6 ">
+          <label id="example-radio-group-label"
+            >{{ i + 1 }} -{{ question.name }}</label
+          >
+        </div>
+        <div class="col-md-5 offset-1 ">
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button
+              *ngFor="let option of question.options"
+              class="option"
+              [value]="option.value"
+              >{{ option.name }}</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div class="row ">
+        <div class="col-12 text-end">
+          <app-button-icon
+            title="Next"
+            (click)="nextStep()"
+            customClass="success-color"
+          ></app-button-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Declaration section -->
+    <div class="stepper Declaration">
+      <div class="header">
+        <p>Questions</p>
+        <p>Declaration</p>
+      </div>
+      <div class="row ">
+        <h5 class="section-title">
+          Please do not sign until you have answered all the questions and read
+          the declaration below:
+        </h5>
+      </div>
+
+      <div class="row ">
+        <div class="col-md-12 ">
+          <ul>
+            <li>
+              I confirm that, to the best of my knowledge, I have answered all
+              the questions accurately, and I consider my blood safe for the
+              transfusion to a patient.
+            </li>
+            <li>
+              I confirm that I am over the age of 18 years.
+            </li>
+          </ul>
+        </div>
+        <div class="col-12  ">
+          <div class="signature">
+            <p>
+              Staff signature sample <br />
+              Dr. Ahmad Rifai
+            </p>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Autograph_of_Benjamin_Franklin.svg/1200px-Autograph_of_Benjamin_Franklin.svg.png"
+            />
+          </div>
+          <div class="signature">
+            <p>
+              Donor Signature Sample
+              <br />
+              Hammad Salem Naser
+            </p>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Autograph_of_Benjamin_Franklin.svg/1200px-Autograph_of_Benjamin_Franklin.svg.png"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row ">
+        <div class="col-12 text-end">
+          <app-button-icon
+            title="Next"
+            (click)="nextStep()"
+            customClass="success-color"
+          ></app-button-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="step three" *ngIf="!loading && pageNumber === 2">
+    <p>Confirm Examination</p>
+    <app-infoTable [list]="list"></app-infoTable>
+    <app-button-icon title="submit" (click)="submitEvent()"></app-button-icon>
+  </div>
+  <!-- <ng-container *ngIf="!loading">
+    <div class="tabelContainer">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>ID Number</th>
+            <th>Phone</th>
+            <th>Generate Barcode</th>
+            <th>Barcode</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let data of mockData
+                | paginate
+                  : {
+                      itemsPerPage: 10,
+                      currentPage: page,
+                      totalItems: totalItems
+                    };
+              let i = index
+            "
+            style="cursor: pointer"
+          >
+            <td>{{ i + 1 }}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.emirateId }}</td>
+            <td>{{ data.mobile }}</td>
+            <td>+2010000220808</td>
+            <td>
+              <button (click)="openDialogBarCode(data)" class="btn">
+                <i class="fas fa-print"></i>
+              </button>
+            </td>
+            <td>
+              <img
+                src="https://www.pngplay.com/wp-content/uploads/2/Barcode-Transparent-PNG.png"
+                height="100px"
+              />
+            </td>
+
+            <td>Pending</td>
+            <td>
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="approveStudent(data.id)">
+                  <mat-icon>done</mat-icon>
+                  <span>{{ "Approve" | translate }}</span>
+                </button>
+              </mat-menu>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <pagination-controls
+      [previousLabel]="'Preview' | translate"
+      [nextLabel]="'Next' | translate"
+      (pageChange)="getPage($event)"
+    >
+    </pagination-controls>
+  </ng-container> -->
+</div>

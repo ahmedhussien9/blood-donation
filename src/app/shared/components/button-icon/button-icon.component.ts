@@ -9,6 +9,9 @@ export class ButtonIconComponent implements OnInit {
   @Input() title: string;
   @Input() icon: string;
   @Input() customStyle: string;
+  @Input() customClass: string;
+
+  
   @Input() isActive: boolean;
   @Output() onClickEventHandler = new EventEmitter();
   constructor() { }

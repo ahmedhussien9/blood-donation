@@ -1,0 +1,152 @@
+@import "~src/assets/scss/variables.scss";
+@import "~src/assets/scss/table.scss";
+.btn {
+  background: $mainColor;
+  color: #fff;
+}
+.wrapper {
+  padding: 2rem 2rem;
+  background: $whiteColor;
+  min-height: 100vh;
+  &__header {
+    h1 {
+      margin-bottom: 0;
+    }
+    align-items: center;
+  }
+}
+
+.filter-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 2rem;
+  .form-group {
+    flex-grow: 1;
+    .input-wrapper {
+      position: relative;
+      input {
+        text-indent: 28px !important;
+        padding-right: 25px;
+        [dir="rtl"] & {
+          padding-right: 8px !important;
+        }
+      }
+      object {
+        height: 18px;
+        position: absolute;
+        top: 13px;
+        left: 16px;
+        [dir="rtl"] & {
+          right: 16px;
+          left: initial;
+        }
+      }
+    }
+  }
+
+  .apply-filter {
+    flex-grow: 1;
+    button {
+      width: 100%;
+      background: #f1f1f1;
+      color: #000;
+      height: 45px;
+      font-weight: bold;
+    }
+  }
+}
+.tabelContainer {
+  margin: 3rem 0rem;
+}
+table {
+  thead {
+    height: 50px;
+    line-height: 50px;
+    background-color: #f8f9fb;
+    color: $lightDark;
+    text-transform: capitalize;
+    font-weight: 700;
+    border-radius: 5px;
+    th {
+      border: none;
+      font-size: 16px;
+      font-weight: 700;
+      color: #464e5f;
+      text-align: center;
+    }
+  }
+  tbody {
+    td {
+      vertical-align: middle;
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+      color: #000;
+      text-align: center;
+      .return-invoice-status,
+      .new-invoice-status {
+        min-width: 20px !important;
+        border-radius: 5px;
+        font-size: 12px;
+        display: block;
+        text-align: center;
+        font-family: Poppins-SemiBold;
+      }
+      .return-invoice-status {
+        background: #e74c3c;
+        color: #fff;
+      }
+      .new-invoice-status {
+        background-color: #3498db;
+        color: #fff;
+      }
+    }
+  }
+}
+.container {
+  background-color: #fff;
+}
+
+.stepper {
+  box-shadow: 0px 0px 12px #0000000f;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  .header {
+    background: #093492;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    p {
+      text-align: center;
+      &:first-child {
+        width: 33%;
+        background: #275ed6;
+      }
+      &:nth-child(2) {
+        width: 66%;
+      }
+    }
+  }
+}
+
+.Health,
+.Risk,
+.Declaration {
+  .section-title {
+    margin: 15px 0 24px;
+  }
+  .option {
+    margin: 10px;
+  }
+}
+
+.Declaration{
+
+    .signature{
+    display: flex;
+    margin: 15px;
+    img{
+        width: 150px;
+    }}
+}

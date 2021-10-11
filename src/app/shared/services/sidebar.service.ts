@@ -39,6 +39,15 @@ export class SidebarService {
       route: "dash/queue",
       roles: [],
     },
+    {
+      icon: ICONS.contract,
+      nameDictionary: {
+        ar: 'الدكتور',
+        en: 'Doctor',
+      },
+      route: "dash/doctor",
+      roles: [],
+    },
   ];
 
   constructor() { }

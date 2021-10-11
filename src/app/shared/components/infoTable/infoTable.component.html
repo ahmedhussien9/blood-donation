@@ -1,0 +1,10 @@
+<div class="info-table">
+  <table class="cards" *ngIf="list">
+    <tbody>
+      <tr *ngFor="let data of list">
+        <td>{{data.key}}</td>
+        <td>{{data.value}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

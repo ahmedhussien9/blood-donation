@@ -21,6 +21,14 @@ const routes: Routes = [
         },
       },
       {
+        path: "doctor",
+        loadChildren: () => import("./modules/doctor/doctor.module").then((m) => m.DoctorModule),
+        data: {
+          // allowedRoles: ['EXAM_APPLICANTS'],
+        },
+      },
+      
+      {
         path: "home",
         loadChildren: () => import("./modules/reports/reports-routing.module").then(
           (m) => m.ReportsRoutingModule

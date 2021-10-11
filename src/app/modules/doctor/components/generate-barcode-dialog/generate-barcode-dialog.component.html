@@ -1,0 +1,46 @@
+<section class="dialog">
+  <div class="dialog__header">
+    <div class="dialog__header__title">
+      <h3>Donor Barcode</h3>
+    </div>
+    <div class="dialog__header__closeDialog">
+      <a (click)="closeDialog()">
+        <mat-icon>clear</mat-icon>
+      </a>
+    </div>
+  </div>
+
+  <div class="dialog__body">
+    <div class="donor-info">
+      <div class="donor-info__lable">Name :</div>
+      <div class="donor-info__value">Ahmed Khattab</div>
+    </div>
+
+    <div class="donor-info">
+      <div class="donor-info__lable">Donor Number:</div>
+      <div class="donor-info__value">#989898</div>
+    </div>
+
+    <div class="donor-info">
+      <div class="donor-info__lable">ID Number:</div>
+      <div class="donor-info__value">9898989865655</div>
+    </div>
+    <div class="donor-barcode">
+      <div class="barcode-data">
+        <h6>Ahmed Khattab</h6>
+        <p>6565656565656</p>
+        <img
+          src="https://www.pngplay.com/wp-content/uploads/2/Barcode-Transparent-PNG.png"
+          height="100px"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog__footer">
+    <app-submit-btn
+      [title]="'Print Braclet'"
+      [loading]="false"
+    ></app-submit-btn>
+  </div>
+</section>
