@@ -62,6 +62,7 @@ export class SidebarService {
       icon: ICONS.question,
       nameDictionary: {
         ar: 'الدكتور',
+       feature/doctorWizerd
         en: 'Donor Interview'
       },
       route: 'dash/doctor',

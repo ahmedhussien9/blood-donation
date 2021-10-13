@@ -130,7 +130,7 @@ export class DoctorComponent implements OnInit {
   ngOnInit(): void {
     this.getPage(1);
     this.loading = true;
-    setTimeout(() => (this.loading = false), 1000);
+    setTimeout(() => (this.loading = false), 7000);
   }
   submitEvent() {
     if (this.pageNumber == 2) return (this.pageNumber = 0);
