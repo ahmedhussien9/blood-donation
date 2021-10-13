@@ -22,7 +22,7 @@ export class SidebarService {
 
   navItems: NavItem[] = [
     {
-      icon: ICONS.contract,
+      icon: ICONS.home,
       nameDictionary: {
         ar: 'المختبرين',
         en: 'Home'
@@ -74,6 +74,24 @@ export class SidebarService {
         en: 'Donor Announcements '
       },
       route: 'dash/announcements',
+      roles: []
+    },
+    {
+      icon: ICONS.chalkboard,
+      nameDictionary: {
+        ar: 'لوحة معلومات الفصد',
+        en: 'Phlebotomy  Dashboard'
+      },
+      route: 'dash/phlebotomy-dashboard',
+      roles: []
+    },
+    {
+      icon: ICONS.fa_heartbeat,
+      nameDictionary: {
+        ar: 'لوحة معلومات الفصد',
+        en: 'Blood Collection'
+      },
+      route: 'dash/blood-collection',
       roles: []
     }
   ];

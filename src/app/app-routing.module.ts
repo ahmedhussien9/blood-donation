@@ -52,6 +52,20 @@ const routes: Routes = [
         },
       },
       {
+        path: "blood-collection",
+        loadChildren: () => import("./modules/blood-collection/blood-collection.module").then((m) => m.BloodCollectionModule),
+        data: {
+          // allowedRoles: ['EXAM_APPLICANTS'],
+        },
+      },
+       {
+        path: "phlebotomy-dashboard",
+        loadChildren: () => import("./modules/phlebotomy-dashboard/phlebotomy-dashboard.module").then((m) => m.PhlebotomyDashboardModule),
+        data: {
+          // allowedRoles: ['EXAM_APPLICANTS'],
+        },
+      },
+      {
         path: "home",
         loadChildren: () => import("./modules/reports/reports-routing.module").then(
           (m) => m.ReportsRoutingModule

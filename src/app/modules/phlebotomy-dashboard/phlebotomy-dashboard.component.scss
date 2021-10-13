@@ -1,0 +1,86 @@
+@import "~src/assets/scss/variables.scss";
+@import "~src/assets/scss/table.scss";
+.btn {
+  background: $mainColor;
+  color: #fff;
+}
+.wrapper {
+  padding: 2rem 2rem;
+  background: $whiteColor;
+  min-height: 100vh;
+  &__header {
+    h1 {
+      margin-bottom: 0;
+    }
+    align-items: center;
+  }
+}
+
+.filter-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 2rem;
+  .form-group {
+    flex-grow: 1;
+    .input-wrapper {
+      position: relative;
+      input {
+        text-indent: 28px !important;
+        padding-right: 25px;
+        [dir="rtl"] & {
+          padding-right: 8px !important;
+        }
+      }
+      object {
+        height: 18px;
+        position: absolute;
+        top: 13px;
+        left: 16px;
+        [dir="rtl"] & {
+          right: 16px;
+          left: initial;
+        }
+      }
+    }
+  }
+
+  
+}
+.tabelContainer {
+  margin: 3rem 0rem;
+}
+
+
+
+
+
+
+
+.progress-bar-table{
+  background: linear-gradient(
+    90deg, rgb(202 223 248 / 30%) 2%, rgb(193 193 193 / 28%) 99%);
+        padding: 5px 10px;
+        border-radius: 10px;
+        /* color: #2b6060; */
+        display: flex;
+        flex-direction: row;
+        min-width: 566px;
+        justify-content: space-around;
+      
+    
+}
+
+.example-full-width {
+  width: 100%;
+}
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+

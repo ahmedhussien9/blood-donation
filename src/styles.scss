@@ -165,6 +165,17 @@ li:last-child a {
 .mat-list-base .mat-list-item .mat-list-item-content {
   font-family: Poppins-Regular !important;
 }
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: rgba(0, 0, 0, .1) !important;
+}
+.progress-bar-table  .mat-checkbox-label{
+  color: #0b3693 !important
+}
+
+.progress-bar-table .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background, .mat-checkbox-disabled.mat-checkbox-indeterminate .mat-checkbox-background{
+  background-color: #0ad06e;
+}
 @font-face {
   font-family: Poppins-Light;
   src: url(./assets/fonts/Poppins/Poppins-Light.ttf) format("truetype"),

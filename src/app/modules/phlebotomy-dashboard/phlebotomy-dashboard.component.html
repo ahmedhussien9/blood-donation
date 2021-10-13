@@ -1,0 +1,71 @@
+<div class="wrapper cpc">
+  <div class="wrapper__header">
+    <h1 class="main-title">Phlebotomy Dashboard</h1>
+  </div>
+  <ng-container *ngIf="loading">
+    <app-loader
+      message="Please wait while the barcode is being scanned ..."
+    ></app-loader>
+  </ng-container>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <ng-container *ngIf="!loading">
+        <div class="tabelContainer">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Donor Number</th>
+                <th>View Donor Details</th>
+                <th>Progress</th>
+                <th>Process Status</th>
+                <th>Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let data of mockData
+                    | paginate
+                      : {
+                          itemsPerPage: 10,
+                          currentPage: page,
+                          totalItems: totalItems
+                        };
+                  let i = index
+                "
+                style="cursor: pointer"
+              >
+                <td>{{ data.number | slice: 0:20 }}</td>
+                <td>
+                  <button class="btn success-color" (click)="openDonorDialog()">
+                    {{ data.donorDetails }}
+                  </button>
+                </td>
+                <td>
+                  <div class="progress-bar-table"   >
+                  <mat-checkbox
+                  *ngFor="let prog of data.progress"
+                    class="example-margin"
+                    [checked]="prog.value"
+                    [disabled]="true"
+                    >{{prog.key}}
+                  </mat-checkbox>
+                </div>
+                </td>
+                <td>{{ data.statusProgress }}</td>
+                <td>{{ data.reason }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <pagination-controls
+          [previousLabel]="'Preview' | translate"
+          [nextLabel]="'Next' | translate"
+          (pageChange)="getPage($event)"
+        >
+        </pagination-controls>
+      </ng-container>
+    </div>
+  </div>
+</div>
