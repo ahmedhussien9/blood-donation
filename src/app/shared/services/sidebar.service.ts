@@ -52,7 +52,7 @@ export class SidebarService {
       icon: ICONS.contract,
       nameDictionary: {
         ar: 'الدكتور',
-        en: 'Doctor',
+        en: 'Donor Interview',
       },
       route: "dash/doctor",
       roles: [],
