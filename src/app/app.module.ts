@@ -27,6 +27,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ChartsModule } from 'ng2-charts';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LayoutState } from './core/state/layout.state';
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -55,9 +56,11 @@ export const MY_FORMATS = {
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,    
+  ],
   imports: [
     BrowserModule,
+    SignaturePadModule,
     CoreModule,
     AppRoutingModule,
     PerfectScrollbarModule,

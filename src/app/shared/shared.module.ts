@@ -44,6 +44,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ChartsModule } from 'ng2-charts';
 import { StatusTagComponent } from './components/status-tag/status-tag.component';
 import { ActionButtonComponent } from './components/action-button/action-button.component';
+import { InfoTableComponent } from './components/infoTable/infoTable.component';
 
 export function CustomPaginator() {
   const customPaginatorIntl = new MatPaginatorIntl();
@@ -71,6 +72,7 @@ export function CustomPaginator() {
     NgxFileDropModule,
     NgxPaginationModule,
     ChartsModule,
+    
   ],
   declarations: [
     // directives
@@ -92,7 +94,8 @@ export function CustomPaginator() {
     FooterComponent,
     EmptyDataComponent,
     StatusTagComponent,
-    ActionButtonComponent
+    ActionButtonComponent,
+    InfoTableComponent
   ],
   exports: [
     FormsModule,
@@ -124,7 +127,8 @@ export function CustomPaginator() {
     FooterComponent,
     EmptyDataComponent,
     StatusTagComponent,
-    ActionButtonComponent
+    ActionButtonComponent,
+    InfoTableComponent
   ],
   providers: [
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },

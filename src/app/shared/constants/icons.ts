@@ -8,5 +8,8 @@ export const ICONS = {
   under_construction: 'fas fa-paint-roller',
   ready_for_shopping: 'fas fa-book-reader',
   location: 'fas fa-map',
-  under_license: "fas fa-file"
+  under_license: "fas fa-file",
+  fa_vials :'fas fa-vials',
+  newspaper :'far fa-newspaper',
+  question :'fas fa-question',
 };

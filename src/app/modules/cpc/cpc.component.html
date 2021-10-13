@@ -1,6 +1,6 @@
-<div class="wrapper">
+<div class="wrapper cpc">
   <div class="wrapper__header">
-    <h1 class="main-title">Doctor</h1>
+    <h1 class="main-title">CBC Test</h1>
   </div>
   <ng-container *ngIf="loading">
     <app-loader
@@ -18,33 +18,24 @@
       <div class="step one">
         <!-- <p>Barcode Scan Data</p> -->
         <app-infoTable [list]="list"></app-infoTable>
-      
       </div>
       <div class="d-flex-between">
-      
-        <button (click)="showDonorDateBtnsHandler(false)" mat-button matStepperNext class="btn success-color">Confirm</button>
+        <button
+          (click)="showDonorDateBtnsHandler(false)"
+          mat-button
+          matStepperNext
+          class="btn success-color"
+        >
+          Confirm
+        </button>
       </div>
     </mat-step>
     <!-- -------------------- 1 end------------------- -->
 
     <!-- -------------------- 2 start------------------- -->
-    <mat-step label="Donor Date">
+    <mat-step label="Donor Questionnaire    ">
       <div class="step step-tow stepper-tow">
         <mat-horizontal-stepper #stepper>
-          <mat-step>
-           
-            <app-infoTable [list]="list2"></app-infoTable>
-            <h3>Test Results:</h3>
-            <img
-              width="50%"
-              src="https://www.researchgate.net/profile/Laurie-Carlson/publication/232872362/figure/tbl1/AS:670721684553743@1536923919660/Q3-Means-and-Standard-Deviations-for-All-CBC-Scales-and-Subscales-Across-All.png"
-            />
-            <div>
-              <button mat-button matStepperNext class="btn">
-                Review Questionnaire
-              </button>
-            </div>
-          </mat-step>
           <mat-step label="Fill out your address">
             <!-- Questions section -->
             <div class="stepper questions">
@@ -60,11 +51,23 @@
                 <div class="col-md-5 offset-2 ">
                   <app-infoTable [list]="list2"></app-infoTable>
                 </div>
+
                 <div class="col-12 d-flex-between">
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext class="btn success-color">
-                    Review Questionnaire
+                  <button mat-button matStepperPrevious class="btn">
+                    Back
                   </button>
+                  <div>
+                    <button
+                      mat-button
+                      matStepperNext
+                      class="success-color ml-3"
+                    >
+                      Confirm
+                    </button>
+                    <button mat-button class="btn ">
+                      Modify
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -105,10 +108,21 @@
 
               <div class="row ">
                 <div class="col-12 d-flex-between">
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext class="btn success-color">
-                    Next
+                  <button mat-button matStepperPrevious class="btn">
+                    Back
                   </button>
+                  <div>
+                    <button
+                      mat-button
+                      matStepperNext
+                      class="success-color ml-3"
+                    >
+                      Confirm
+                    </button>
+                    <button mat-button class="btn ">
+                      Modify
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -148,10 +162,22 @@
               </div>
               <div class="row ">
                 <div class="col-12 d-flex-between">
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext class="btn success-color">
-                    Next
+                  <button mat-button matStepperPrevious class="btn">
+                    Back
                   </button>
+                  <div>
+                    <button
+                      mat-button
+                      matStepperNext
+                      class="success-color ml-3"
+                      (click)="showDonorDateBtnsHandler(true)"
+                    >
+                      Confirm
+                    </button>
+                    <button mat-button class="btn ">
+                      Modify
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -186,62 +212,36 @@
                 </div>
                 <div class="col-12  ">
                   <div class="signature">
-                    <p>
-                      Staff signature sample <br />
-                      Dr. Ahmad Rifai
-                    </p>
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Autograph_of_Benjamin_Franklin.svg/1200px-Autograph_of_Benjamin_Franklin.svg.png"
-                    />
-                  </div>
-                  <div class="signature">
-                    <p>
-                      Donor Signature Sample
-                      <br />
-                      Hammad Salem Naser
-                    </p>
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Autograph_of_Benjamin_Franklin.svg/1200px-Autograph_of_Benjamin_Franklin.svg.png"
-                    />
+                    <app-button-icon
+                      title="Donor Signature "
+                      (click)="openDonorDialog()"
+                      customClass=""
+                    ></app-button-icon>
+                    <app-button-icon
+                      title="Staff Signature "
+                      (click)="openStaffDialog()"
+                      customClass=""
+                    ></app-button-icon>
                   </div>
                 </div>
               </div>
               <div class="row ">
                 <div class="col-12 d-flex-between">
                   <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext class="btn success-color" (click)="showDonorDateBtnsHandler(true)">
-                    Next
-                  </button>
                 </div>
               </div>
             </div>
           </mat-step>
-          <mat-step>
-            <p>Donor Date</p>
-            <app-infoTable [list]="list2"></app-infoTable>
-            <h3>Test Results:</h3>
-            <img
-              width="50%"
-              src="https://www.researchgate.net/profile/Laurie-Carlson/publication/232872362/figure/tbl1/AS:670721684553743@1536923919660/Q3-Means-and-Standard-Deviations-for-All-CBC-Scales-and-Subscales-Across-All.png"
-            />
-
-            <div class="row " *ngIf="!showDonorDateBtns">
-              <div class="col-12 d-flex-between">
-                <button mat-button matStepperPrevious>
-                  Review Questionnaire
-                </button>
-                <button  mat-button matStepperNext class="btn success-color">
-                  Proceed
-                </button>
-              </div>
-            </div>
-          </mat-step>
-
-
         </mat-horizontal-stepper>
         <div *ngIf="showDonorDateBtns">
-          <button  mat-button matStepperPrevious class="btn " (click)="showDonorDateBtnsHandler(false)">Review Questionnaire</button>
-          <button mat-button matStepperNext class="btn success-color" (click)="showDonorDateBtnsHandler(true)">Proceed</button>
+          <button
+            mat-button
+            matStepperNext
+            class="btn success-color"
+            (click)="showDonorDateBtnsHandler(true)"
+          >
+            cpc result
+          </button>
         </div>
       </div>
     </mat-step>
@@ -249,23 +249,66 @@
 
     <!-- -------------------- 3 start------------------- -->
     <mat-step>
-      <ng-template matStepLabel>Confirm Examination</ng-template>
-      <div class="step three">
-       
-        <app-infoTable [list]="list"></app-infoTable>
-      
+      <ng-template matStepLabel>CBC Results </ng-template>
+      <p>Donor Date</p>
+      <div class="row">
+        <div class="col-6">
+          <app-infoTable [list]="list2"></app-infoTable>
+          <div>
+            <h3>Test Results:</h3>
+            <img
+              width="90%"
+              src="https://www.researchgate.net/profile/Laurie-Carlson/publication/232872362/figure/tbl1/AS:670721684553743@1536923919660/Q3-Means-and-Standard-Deviations-for-All-CBC-Scales-and-Subscales-Across-All.png"
+            />
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="decision-form"> 
+            <form>
+              <h5>Decision</h5>
+              <mat-radio-group >
+                <mat-radio-button value="1">Accept</mat-radio-button>
+                <mat-radio-button value="2">Defer</mat-radio-button>
+              </mat-radio-group>
+  
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Blood Pressure :</mat-label>
+                <input matInput #input maxlength="100" placeholder="Blood Pressure">
+              </mat-form-field>
+  
+              <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label>Hemoglobin/Hematocrit: </mat-label>
+                <input matInput #input maxlength="100" placeholder="Hemoglobin/Hematocrit">
+              </mat-form-field>
+  
+              <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label>Deferral Period:              </mat-label>
+                <input matInput #input maxlength="100" placeholder="Deferral Period">
+              </mat-form-field>
+  
+              <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label>Reason for Deferral: </mat-label>
+                <input matInput #input maxlength="100" placeholder="Reason for Deferral">
+              </mat-form-field>
+
+              <app-button-icon
+              title="Submit"
+              (click)="submit()"
+              customClass="success-color"
+            ></app-button-icon>
+            </form>
+             
+          </div>
+        </div>
       </div>
-      <div class="text-center">
-        <app-button-icon
-        title="Confirm for Phlebotomy"
-        (click)="submitEvent()"
-        customClass="success-color"
-      ></app-button-icon>
-      <app-button-icon
-      title="Defer"
-      (click)="submitEvent()"
-      customClass="success-color"
-    ></app-button-icon>
+    
+      <div class="d-flex-between">
+        <button mat-button matStepperPrevious class="btn">Back</button>
+        <app-button-icon *ngIf="nextDonor"
+          title="Next Donor"
+          (click)="submitEvent()"
+          customClass="success-color"
+        ></app-button-icon>
       </div>
     </mat-step>
     <!-- -------------------- 3 end------------------- -->
