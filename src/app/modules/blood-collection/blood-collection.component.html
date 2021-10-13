@@ -1,0 +1,213 @@
+<div class="wrapper cpc">
+  <div class="wrapper__header">
+    <h1 class="main-title">blood collection</h1>
+  </div>
+  <ng-container *ngIf="loading">
+    <app-loader
+      message="Please wait while the barcode is being scanned ..."
+    ></app-loader>
+  </ng-container>
+
+  <mat-horizontal-stepper [linear]="true" #stepper *ngIf="!loading">
+    <!-- -------------------- 1 start------------------- -->
+
+    <mat-step label="Donors Queue">
+      <!-- <ng-template matStepLabel>Barcode Scan Data</ng-template> -->
+      <div class="step one">
+        <div class="row">
+          <div class="col-6">
+            <ng-container *ngIf="!loading">
+              <div class="tabelContainer">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Donor Number</th>
+                      <th>Action</th>
+                      <th>Progress</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let data of mockData
+                          | paginate
+                            : {
+                                itemsPerPage: 10,
+                                currentPage: page,
+                                totalItems: totalItems
+                              };
+                        let i = index
+                      "
+                      style="cursor: pointer"
+                    >
+                      <td>{{ data.name | slice: 0:20 }}</td>
+                      <td>
+                        <button
+                          matStepperNext
+                          class="btn"
+                          [ngClass]="{
+                            'success-color ': data.action === 'Admitted'
+                          }"
+                        >
+                          {{ data.action }}
+                        </button>
+                      </td>
+                      <td>{{ data.progress }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <pagination-controls
+                [previousLabel]="'Preview' | translate"
+                [nextLabel]="'Next' | translate"
+                (pageChange)="getPage($event)"
+              >
+              </pagination-controls>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="text-end">
+        <button
+          (click)="showDonorDateBtnsHandler(false)"
+          mat-button
+          matStepperNext
+          class="btn success-color"
+        >
+          Confirm
+        </button>
+      </div>
+    </mat-step>
+    <!-- -------------------- 1 end------------------- -->
+
+    <!-- -------------------- 2 start------------------- -->
+    <mat-step label="Blood Labeling">
+      <div class="step step-tow stepper-tow">
+        <div class="row">
+          <div class="col-6">
+            <app-infoTable [list]="list"></app-infoTable>
+            <app-infoTable [list]="list2"></app-infoTable>
+            <app-button-icon
+              title="Generate Label"
+              (click)="generateLabel()"
+              customClass="success-color"
+            ></app-button-icon>
+          </div>
+          <div class="col-6">
+            <div class="barcode">
+              <div class="barcode-data">
+                <h1>O</h1>
+                <h6 style="margin-bottom: 1rem">
+                  <strong>Rh Negative</strong>
+                </h6>
+                <h6><strong>Collection Date</strong>: 07/10/21</h6>
+                <h6><strong>Expires</strong>: 07/10/21</h6>
+                <h6><strong>Unit Number</strong>: 575</h6>
+                <img
+                  src="https://www.pngplay.com/wp-content/uploads/2/Barcode-Transparent-PNG.png"
+                  height="100px"
+                />
+                <app-button-icon
+                  title="Print Label"
+                  (click)="printLabel()"
+                  customClass="success-color"
+                ></app-button-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-end">
+          <button
+            mat-button
+            matStepperNext
+            class="btn success-color"
+            (click)="showDonorDateBtnsHandler(true)"
+          >
+            next
+          </button>
+        </div>
+      </div>
+    </mat-step>
+    <!-- -------------------- 2 end------------------- -->
+
+    <!-- -------------------- 3 start------------------- -->
+    <mat-step label="Blood Withdrawal">
+      <p>Donor Date</p>
+      <div class="row">
+        <div class="col-6">
+          <app-infoTable [list]="list3"></app-infoTable>
+        </div>
+        <div class="col-6">
+          <ng-container>
+            <app-loader message="Collecting Blood ..."></app-loader>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="d-flex-between">
+        <button mat-button class="btn">Back</button>
+        <button
+          (click)="submitEvent()"
+          mat-button
+          matStepperNext
+          class="btn success-color"
+        >
+          Input Donor Status
+        </button>
+      </div>
+    </mat-step>
+    <!-- -------------------- 3 end------------------- -->
+
+    <!-- -------------------- 2 start------------------- -->
+    <mat-step label="Process Status">
+      <p>Donor Date</p>
+      <div class="row">
+        <div class="col-6">
+          <app-infoTable [list]="list2"></app-infoTable>
+        </div>
+        <div class="col-6">
+          <div class="status-form">
+            <form>
+              <label id="example-radio-group-label">Status</label>
+              <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="example-radio-group"
+              >
+                <mat-radio-button class="example-radio-button" value="Completed"
+                  >Completed
+                </mat-radio-button>
+                <br/><br/>
+                <mat-radio-button class="example-radio-button" value="Deferred"
+                  >Deferred
+                </mat-radio-button>
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Reason</mat-label>
+                  <input matInput placeholder="Reason" />
+                </mat-form-field>
+                <mat-radio-button class="example-radio-button" value="Stopped"
+                  >Stopped
+                </mat-radio-button>
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Reason</mat-label>
+                  <input matInput placeholder="Reason" />
+                </mat-form-field>
+              </mat-radio-group>
+
+              <app-button-icon
+                title="Submit"
+                (click)="submit()"
+                customClass="success-color"
+              ></app-button-icon>
+            </form>
+          </div>
+        </div>
+        <div class="col-6"></div>
+      </div>
+
+      <div class="d-flex-between">
+        <button mat-button matStepperPrevious class="btn">Back</button>
+      </div>
+    </mat-step>
+    <!-- -------------------- 4 end------------------- -->
+  </mat-horizontal-stepper>
+</div>

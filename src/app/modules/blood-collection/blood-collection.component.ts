@@ -5,13 +5,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { StudentI } from 'src/app/shared/models/students.model';
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-doctor',
-  templateUrl: './doctor.component.html',
-  styleUrls: ['./doctor.component.scss']
+  templateUrl: './blood-collection.component.html',
+  styleUrls: ['./blood-collection.component.scss']
 })
-export class DoctorComponent implements OnInit {
+export class BloodCollectionComponent implements OnInit {
   students: StudentI[];
   loading: boolean = false;
   page: number = 1;
@@ -21,55 +25,28 @@ export class DoctorComponent implements OnInit {
   lang = localStorage.getItem('LOCALIZE_DEFAULT_LANGUAGE');
   selected: { startDate: Date; endDate: Date };
   getRequests = [];
-  showDonorDateBtns = false
+  showDonorDateBtns = false;
   mockData = [
     {
       id: 1,
       name: 'Ahmed Khattab',
-      mobile: '+201000322322',
-      emirateId: '65656566565',
-      status: 'Done',
-      nationality: 'United Arab Emirates'
+      action: 'Admitted',
+      progress: 'Done',
+     
     },
     {
       id: 1,
       name: 'Ahmed Khattab',
-      mobile: '+201000322322',
-      emirateId: '65656566565',
-      status: 'Done',
-      nationality: 'United Arab Emirates'
+      action: 'Proceed',
+      progress: 'Pending',
+     
     },
     {
       id: 1,
       name: 'Ahmed Khattab',
-      mobile: '+201000322322',
-      emirateId: '65656566565',
-      status: 'Done',
-      nationality: 'United Arab Emirates'
-    },
-    {
-      id: 1,
-      name: 'Ahmed Khattab',
-      mobile: '+201000322322',
-      emirateId: '65656566565',
-      status: 'Done',
-      nationality: 'United Arab Emirates'
-    },
-    {
-      id: 1,
-      name: 'Ahmed Khattab',
-      mobile: '+201000322322',
-      emirateId: '65656566565',
-      status: 'Done',
-      nationality: 'United Arab Emirates'
-    },
-    {
-      id: 1,
-      name: 'Ahmed Khattab',
-      mobile: '+201000322322',
-      emirateId: '65656566565',
-      status: 'Done',
-      nationality: 'United Arab Emirates'
+      action: 'Proceed',
+      progress: 'Pending',
+     
     }
   ];
   isLinear = false;
@@ -77,35 +54,33 @@ export class DoctorComponent implements OnInit {
   secondFormGroup: FormGroup;
   firstFormGroup1: FormGroup;
   secondFormGroup2: FormGroup;
+  nextDonor: boolean = false;
+  animal: string;
+  name: string;
   list = [
     { key: 'Donor Name', value: 'Hammad Salem Naser' },
     { key: 'Donor ID', value: '784-1234-1234567-1' },
     { key: 'Donor Number', value: '9876623' }
   ];
-  
+
   list2 = [
+    { key: 'Blood Group', value: 'Hammad Salem Naser' },
+    { key: 'Collection Date', value: '784-1234-1234567-1' },
+    { key: 'Expires', value: '9876623' },
+    { key: 'Unit Numbert', value: '7/10/21 11:30 AM' }
+  ];
+ 
+  list3 = [
     { key: 'Donor Name', value: 'Hammad Salem Naser' },
     { key: 'Donor ID', value: '784-1234-1234567-1' },
     { key: 'Donor Number', value: '9876623' },
-    { key: 'Date of Appointment', value: '7/10/21 11:30 AM' }
+    { key: 'Blood Group', value: 'O Rh Negative' },
+    { key: 'Collection Date', value: '07/10/21' },
+    { key: 'Expires', value: '07/05/22' },
+    { key: 'Unit Number', value: '12' }
   ];
-  list3 = [
-    { key: 'First Name', value: 'Hammad Salem Naser' },
-    { key: 'Last Name', value: '784-1234-1234567-1' },
-    { key: 'Gender', value: 'male' },
-    { key: 'Occupation', value: '7/10/21 11:30 AM' },
-    { key: 'Address', value: 'madia,Egypt' },
-    { key: 'Email', value: 'mo@salah.com' },
-  ];
-
-  questionList = [
-    { name: 'Are you feeling well and in good health today ?', options: [{name:'Yes',value:true},{name:'No',value:false}] },
-    { name: 'Is your reason for donating blood to undergo an HIV test?', options: [{name:'Yes',value:true},{name:'No',value:false}] },
-    { name: 'Are you feeling well and in good health today ?', options: [{name:'Yes',value:true},{name:'No',value:false}] },
-    { name: 'Is your reason for donating blood to undergo an HIV test', options: [{name:'Yes',value:true},{name:'No',value:false}] },
-    { name: 'Are you feeling well and in good health today ?', options: [{name:'Yes',value:true},{name:'No',value:false}] },
-    { name: 'Is your reason for donating blood to undergo an HIV test ?', options: [{name:'Yes',value:true},{name:'No',value:false}] },
-  ];
+ 
+ 
 
   pageNumber = 1;
   constructor(
@@ -126,22 +101,37 @@ export class DoctorComponent implements OnInit {
       from: ['']
     }));
   }
+  generateLabel(){
 
+  }
+  printLabel(){}
   ngOnInit(): void {
     this.getPage(1);
     this.loading = true;
-    setTimeout(() => (this.loading = false), 7000);
+    setTimeout(() => (this.loading = false), 1000);
   }
   submitEvent() {
     if (this.pageNumber == 2) return (this.pageNumber = 0);
     this.pageNumber++;
     console.log('submitEvent');
   }
+  openDonorDialog() {
+    this.openSigntureComp();
+  }
+  openStaffDialog() {
+    this.openSigntureComp();
+  }
+  submit() {
+    this.nextDonor = true;
+  }
+  openSigntureComp(): void {
+ 
+  }
 
   nextStep() {}
-  showDonorDateBtnsHandler(flag){
-    console.log(flag,'flag')
-    this.showDonorDateBtns = flag
+  showDonorDateBtnsHandler(flag) {
+    console.log(flag, 'flag');
+    this.showDonorDateBtns = flag;
   }
   getPage(page) {
     // this.loading = true;
@@ -159,8 +149,6 @@ export class DoctorComponent implements OnInit {
     //   )
     //   .subscribe();
   }
-
- 
 
   approveStudent(studentId) {}
 }

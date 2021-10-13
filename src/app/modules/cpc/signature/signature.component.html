@@ -1,0 +1,24 @@
+<p>
+  drow your signature below
+  <app-button-icon
+    title="clear"
+    (click)="clear()"
+    customClass=""
+  ></app-button-icon>
+</p>
+<signature-pad
+  [options]="signaturePadOptions"
+  (onBeginEvent)="drawStart()"
+  (onEndEvent)="drawComplete()"
+></signature-pad>
+
+<app-button-icon
+  title="submit"
+  (click)="submitSignature()"
+  customClass="success-color"
+></app-button-icon>
+<app-button-icon
+  title="cancel"
+  (click)="cancelDialog()"
+  customClass=""
+></app-button-icon>
