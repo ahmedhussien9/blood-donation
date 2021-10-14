@@ -18,28 +18,39 @@ export class HttpAuthService {
 
   public isUserOperationSource = new BehaviorSubject<boolean>(false);
   public isUserOperationState = this.isUserOperationSource.asObservable();
+  public userWithRoles = new BehaviorSubject<any>(null);
+
+  
+  USERS = [
+    { email: 'reciptionest', roles: ['home-reports', 'queue', 'campaigns'] },
+    { email: 'cbc', roles: ['home-reports', 'cpc'] },
+    { email: 'donor', roles: ['home-reports', 'doctor', 'announcements'] },
+    {
+      email: 'phlebotomy',
+      roles: ['home-reports', 'phlebotomy-dashboard', 'blood-collection']
+    }
+  ];
+
   constructor(
     private httpClient: HttpClient,
     private jwtHelperService: JwtHelperService,
     private router: Router
-  ) { }
-
+  ) {}
 
   registerApi(body) {
     const headers = new HttpHeaders();
-    headers.append("Content-Type", "multipart/form-data");
+    headers.append('Content-Type', 'multipart/form-data');
     return this.httpClient.post(`${this.baseUrl}register`, body, {
-      observe: "response",
+      observe: 'response',
       headers: headers
     });
   }
 
   loginApi(body) {
     return this.httpClient.post(`${this.baseUrl}login`, body, {
-      observe: "response"
+      observe: 'response'
     });
   }
-
 
   public saveToken(token: string): void {
     localStorage.setItem('token', token);
@@ -60,7 +71,7 @@ export class HttpAuthService {
   }
 
   isLoggedIn() {
-    this.tokenSubjectData.subscribe((data) => {
+    this.tokenSubjectData.subscribe(data => {
       return data;
     });
   }
@@ -75,9 +86,18 @@ export class HttpAuthService {
 
   public logOut() {
     localStorage.removeItem('token');
+    localStorage.removeItem('userWithRoles');
     window.location.reload();
   }
 
+  simulateLocalLogin(email) {
+    let user = this.USERS.find(user => user.email === email);
+    if (user) {
+      this.userWithRoles.next(user)
+      localStorage.setItem('userWithRoles', JSON.stringify(user));
+      this.router.navigate(['/dash/home-reports']);
+    } else return alert('no user found !!');
+  }
 
   isAuthorized(allowedRoles: string[]): boolean {
     if (allowedRoles == null || allowedRoles.length === 0) {
@@ -89,8 +109,9 @@ export class HttpAuthService {
       this.router.navigate(['/auth']);
       return false;
     }
+
     const roles = decodeToken['privileges'];
-    const isFoundedRole = allowedRoles.some((al) => roles.includes(al));
+    const isFoundedRole = allowedRoles.some(al => roles.includes(al));
     return isFoundedRole;
   }
 }

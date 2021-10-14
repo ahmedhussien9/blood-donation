@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   showPassword = false;
   formGroup: FormGroup;
   lang = localStorage.getItem("LOCALIZE_DEFAULT_LANGUAGE");
-  bgPhoto = `./assets/images/banner.png`;
+  bgPhoto = `https://www.parkrapidsenterprise.com/incoming/7102655-3a5emi-071021.N.PRE.StockBloodDonation.jpg/alternates/BASE_LANDSCAPE/071021.N.PRE.StockBloodDonation.jpg`;
   loading = false;
   constructor(
     private fb: FormBuilder,
@@ -37,28 +37,31 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    this.loading = true;
+    // this.loading = true;
     if (this.formGroup.invalid) {
       this.loading = false;
       this.toastr.error("Please enter the required information");
       return;
     }
+   let user =  this.httpAuthService.simulateLocalLogin(this.formGroup.value.email);
 
-    this.httpAuthService.loginApi(this.formGroup.value).pipe(
-      finalize(() => this.loading = false)
-    ).subscribe(data => {
+    // this.httpAuthService.loginApi(this.formGroup.value).pipe(
+    //   finalize(() => this.loading = false)
+    // ).subscribe(data => {
 
-      this.httpAuthService.saveToken(data.body['token']);
-      this.httpAuthService.saveUserData(data.body);
+    //   this.httpAuthService.saveToken(data.body['token']);
+    //   this.httpAuthService.saveUserData(data.body);
 
-      if (data.body['roles'][0] === "admin") {
-        this.router.navigate(['/dash/home-reports']);
-        return;
-      }
-      this.router.navigate(['/dash']);
-    }, err => {
-      this.toastr.error(err.error.message);
-    })
+    //   if (data.body['roles'][0] === "admin") {
+    //     this.router.navigate(['/dash/home-reports']);
+    //     return;
+    //   }
+    //   this.router.navigate(['/dash']);
+    // }, err => {
+    //   this.toastr.error(err.error.message);
+    // })
+
+
   };
 
 }

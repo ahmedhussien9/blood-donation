@@ -32,12 +32,12 @@ export class CampaignsComponent implements OnInit {
     },
     {
       id: 1,
-      name: 'Saving lives together',
-      organizer: 'Hospital Ray Hope',
-      phone: '+98985656555',
+      name: 'Power Donors',
+      organizer: 'University of Dubai',
+      phone: '+971 5 623 8376',
       date: '28-11-2021 to 31-12-2021',
       description:
-        'Collecting blood for the children in the Hospitals children cancer center',
+        'Blood donation walk-in drive for Rainbow’s cancer center',
     },
   ];
   constructor(

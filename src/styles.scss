@@ -176,6 +176,10 @@ li:last-child a {
 .progress-bar-table .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background, .mat-checkbox-disabled.mat-checkbox-indeterminate .mat-checkbox-background{
   background-color: #0ad06e;
 }
+
+.example-full-width {
+  width: 100%;
+}
 @font-face {
   font-family: Poppins-Light;
   src: url(./assets/fonts/Poppins/Poppins-Light.ttf) format("truetype"),

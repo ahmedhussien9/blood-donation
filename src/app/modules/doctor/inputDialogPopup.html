@@ -1,0 +1,15 @@
+<mat-form-field class="example-full-width" >
+  <mat-label>Leave a Reason</mat-label>
+  <textarea matInput placeholder="type here..."></textarea>
+</mat-form-field>
+<br />
+<app-button-icon
+  title="submit"
+  (click)="submitDeferReason()"
+  customClass="success-color"
+></app-button-icon>
+<app-button-icon
+  title="cancel"
+  (click)="cancelDialog()"
+  customClass=""
+></app-button-icon>

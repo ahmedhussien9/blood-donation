@@ -45,10 +45,12 @@
     td {
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
+      // white-space: nowrap;
       transition: all 200ms ease-in-out;
       text-transform: capitalize;
       width: 400px;
+      white-space: initial;
+    line-height: 20px;
     }
 
   }

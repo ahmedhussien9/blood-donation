@@ -19,7 +19,8 @@
     <mat-nav-list class="sidenav__links">
       <ng-container *ngFor="let link of links; let i = index">
         <!-- Parent Link  -->
-        <ng-container >
+        <ng-container *ngIf="link.roles.indexOf(userRoles) >= 0" >
+         
           <mat-list-item class="sidenav__links__parent" [ngStyle]="{
             margin: link.isExpand && link.children ? '' : '10px 0'
           }" (click)="expandChildLink(i, link)">
