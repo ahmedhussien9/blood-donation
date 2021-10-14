@@ -1,6 +1,12 @@
 import { Direction } from '@angular/cdk/bidi';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
@@ -10,9 +16,12 @@ import { ICONS } from 'src/app/shared/constants';
 import { LanguageService } from 'src/app/shared/services/language.service';
 import {
   NavItem,
-  SidebarService,
+  SidebarService
 } from 'src/app/shared/services/sidebar.service';
-import { CloseFilterSidenavAction, OpenSidenavAction } from '../actions/layout/layout.actions';
+import {
+  CloseFilterSidenavAction,
+  OpenSidenavAction
+} from '../actions/layout/layout.actions';
 
 import { HttpAuthService } from '../auth/services/http-auth.service';
 import { LayoutState, SideNavModel } from '../state/layout.state';
@@ -21,7 +30,7 @@ import { LayoutState, SideNavModel } from '../state/layout.state';
   selector: 'app-adminlayout',
   templateUrl: './adminlayout.component.html',
   styleUrls: ['./adminlayout.component.scss'],
-  animations: [onMainContentChange],
+  animations: [onMainContentChange]
 })
 export class AdminlayoutComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
@@ -31,9 +40,14 @@ export class AdminlayoutComponent implements OnInit {
   links: NavItem[];
   subLinksIcon: string;
   dir: 'rtl' | 'ltr';
-  name = JSON.parse(localStorage.getItem("userData")) && JSON.parse(localStorage.getItem("userData")).name ? JSON.parse(localStorage.getItem("userData")).name : "";
+  userRoles;
+  name =
+    JSON.parse(localStorage.getItem('userData')) &&
+    JSON.parse(localStorage.getItem('userData')).name
+      ? JSON.parse(localStorage.getItem('userData')).name
+      : '';
   @Select(LayoutState.getSidebarState) sideNavbar$: Observable<SideNavModel>;
-  @ViewChild("menu", { static: false }) menuElRef: ElementRef;
+  @ViewChild('menu', { static: false }) menuElRef: ElementRef;
   constructor(
     private readonly breakpointObserver: BreakpointObserver,
     private readonly sidebarservice: SidebarService,
@@ -43,7 +57,12 @@ export class AdminlayoutComponent implements OnInit {
     private store: Store,
     private render: Renderer2,
     private authService: HttpAuthService
-  ) { }
+  ) {
+    this.authService.userWithRoles.subscribe(roles => {
+      this.userRoles = roles?.email || JSON.parse( localStorage.getItem('userWithRoles')).email;
+      console.log( this.userRoles,JSON.parse( localStorage.getItem('userWithRoles')).email)
+    });
+  }
 
   ngOnInit() {
     this.links = this.sidebarservice.navItems;
@@ -74,15 +93,15 @@ export class AdminlayoutComponent implements OnInit {
 
   settings() {
     console.log(this.menuElRef.nativeElement);
-    this.render.addClass(this.menuElRef.nativeElement, 'open')
+    this.render.addClass(this.menuElRef.nativeElement, 'open');
   }
 
   expandCurrentChildLink(): void {
     this.links
-      .map((link) => link.children)
+      .map(link => link.children)
       .forEach((subLinks, index) => {
         if (subLinks) {
-          subLinks.forEach((subLink) => {
+          subLinks.forEach(subLink => {
             if (`/dash/${subLink.route}` === this.router.url) {
               this.links[index].isExpand = true;
               return;
@@ -122,7 +141,7 @@ export class AdminlayoutComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([this.router.url], {
-      relativeTo: this.route,
+      relativeTo: this.route
     });
   }
 

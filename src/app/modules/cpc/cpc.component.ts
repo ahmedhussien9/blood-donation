@@ -109,28 +109,70 @@ export class CpcComponent implements OnInit {
   questionList = [
     {
       name: 'Are you feeling well and in good health today ?',
-      options: [{ name: 'Yes', value: true }, { name: 'No', value: false }]
+      options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:false
+    },
+    {
+      name: 'In the last 4 hours, have you had a meal or snack?',
+       options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:true
+    },
+    {
+      name: 'Have you already given blood in the last 16 weeks?',
+       options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:false
+    },
+    {
+      name: 'Are you pregnant or breastfeeding?',
+       options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:true
+    },
+    {
+      name: 'Do you have or have you ever had ?',
+       options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:false
+    },
+    {
+      name: 'Lung disease, tuberculosis, or asthma?',
+       options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:false
+    },
+    {
+      name: 'Cancer, a blood disease, or abnormal bleeding disorder ?',
+       options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:false
+    }
+    
+
+  ];
+
+  questionList2 = [
+    {
+      name: 'Have you ever been tested for HIV ?',
+      options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:false
+    },
+    {
+      name: 'Have you ever been refused as a blood donor or told not to donate',
+       options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:true
     },
     {
       name: 'Is your reason for donating blood to undergo an HIV test?',
-      options: [{ name: 'Yes', value: true }, { name: 'No', value: false }]
+       options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:false
     },
     {
-      name: 'Are you feeling well and in good health today ?',
-      options: [{ name: 'Yes', value: true }, { name: 'No', value: false }]
+      name: 'Have you been in contact with anyone with infectious disease in the last 12 months ?',
+       options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:true
     },
     {
-      name: 'Is your reason for donating blood to undergo an HIV test',
-      options: [{ name: 'Yes', value: true }, { name: 'No', value: false }]
-    },
-    {
-      name: 'Are you feeling well and in good health today ?',
-      options: [{ name: 'Yes', value: true }, { name: 'No', value: false }]
-    },
-    {
-      name: 'Is your reason for donating blood to undergo an HIV test ?',
-      options: [{ name: 'Yes', value: true }, { name: 'No', value: false }]
+      name: 'In the last 12 months, have you had any immunizations, vaccinations or jabs ?',
+       options: [{ name: 'Yes', value: true }, { name: 'No', value: false }],
+      value:false
     }
+
   ];
 
   pageNumber = 1;

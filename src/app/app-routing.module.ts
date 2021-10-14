@@ -18,7 +18,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules/queue/queue.module').then((m) => m.QueueModule),
         data: {
-          allowedRoles: ['EXAM_APPLICANTS'],
+          allowedRoles: ['queue'],
         },
       },
       {

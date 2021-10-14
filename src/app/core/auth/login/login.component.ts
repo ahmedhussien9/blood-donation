@@ -37,28 +37,31 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    this.loading = true;
+    // this.loading = true;
     if (this.formGroup.invalid) {
       this.loading = false;
       this.toastr.error("Please enter the required information");
       return;
     }
+   let user =  this.httpAuthService.simulateLocalLogin(this.formGroup.value.email);
 
-    this.httpAuthService.loginApi(this.formGroup.value).pipe(
-      finalize(() => this.loading = false)
-    ).subscribe(data => {
+    // this.httpAuthService.loginApi(this.formGroup.value).pipe(
+    //   finalize(() => this.loading = false)
+    // ).subscribe(data => {
 
-      this.httpAuthService.saveToken(data.body['token']);
-      this.httpAuthService.saveUserData(data.body);
+    //   this.httpAuthService.saveToken(data.body['token']);
+    //   this.httpAuthService.saveUserData(data.body);
 
-      if (data.body['roles'][0] === "admin") {
-        this.router.navigate(['/dash/home-reports']);
-        return;
-      }
-      this.router.navigate(['/dash']);
-    }, err => {
-      this.toastr.error(err.error.message);
-    })
+    //   if (data.body['roles'][0] === "admin") {
+    //     this.router.navigate(['/dash/home-reports']);
+    //     return;
+    //   }
+    //   this.router.navigate(['/dash']);
+    // }, err => {
+    //   this.toastr.error(err.error.message);
+    // })
+
+
   };
 
 }

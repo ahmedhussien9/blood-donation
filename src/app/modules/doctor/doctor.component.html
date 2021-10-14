@@ -18,11 +18,16 @@
       <div class="step one">
         <!-- <p>Barcode Scan Data</p> -->
         <app-infoTable [list]="list"></app-infoTable>
-      
       </div>
       <div class="d-flex-between">
-      
-        <button (click)="showDonorDateBtnsHandler(false)" mat-button matStepperNext class="btn success-color">Confirm</button>
+        <button
+          (click)="showDonorDateBtnsHandler(false)"
+          mat-button
+          matStepperNext
+          class="btn success-color"
+        >
+          Confirm
+        </button>
       </div>
     </mat-step>
     <!-- -------------------- 1 end------------------- -->
@@ -32,7 +37,6 @@
       <div class="step step-tow stepper-tow">
         <mat-horizontal-stepper #stepper>
           <mat-step>
-           
             <app-infoTable [list]="list2"></app-infoTable>
             <h3>Test Results:</h3>
             <img
@@ -63,7 +67,7 @@
                 <div class="col-12 d-flex-between">
                   <button mat-button matStepperPrevious>Back</button>
                   <button mat-button matStepperNext class="btn success-color">
-                    Review Questionnaire
+                    Next
                   </button>
                 </div>
               </div>
@@ -96,6 +100,8 @@
                     <mat-radio-button
                       *ngFor="let option of question.options"
                       class="option"
+                      [checked]="question.value == option.value"
+                      disabled
                       [value]="option.value"
                       >{{ option.name }}</mat-radio-button
                     >
@@ -140,6 +146,8 @@
                     <mat-radio-button
                       *ngFor="let option of question.options"
                       class="option"
+                      [checked]="question.value == option.value"
+                      disabled
                       [value]="option.value"
                       >{{ option.name }}</mat-radio-button
                     >
@@ -186,30 +194,32 @@
                 </div>
                 <div class="col-12  ">
                   <div class="signature">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Autograph_of_Benjamin_Franklin.svg/1200px-Autograph_of_Benjamin_Franklin.svg.png"
+                    />
                     <p>
-                      Staff signature sample <br />
                       Dr. Ahmad Rifai
                     </p>
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Autograph_of_Benjamin_Franklin.svg/1200px-Autograph_of_Benjamin_Franklin.svg.png"
-                    />
                   </div>
                   <div class="signature">
-                    <p>
-                      Donor Signature Sample
-                      <br />
-                      Hammad Salem Naser
-                    </p>
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Autograph_of_Benjamin_Franklin.svg/1200px-Autograph_of_Benjamin_Franklin.svg.png"
                     />
+                    <p>
+                      Hammad Salem Naser
+                    </p>
                   </div>
                 </div>
               </div>
               <div class="row ">
                 <div class="col-12 d-flex-between">
                   <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext class="btn success-color" (click)="showDonorDateBtnsHandler(true)">
+                  <button
+                    mat-button
+                    matStepperNext
+                    class="btn success-color"
+                    (click)="showDonorDateBtnsHandler(true)"
+                  >
                     Next
                   </button>
                 </div>
@@ -227,21 +237,33 @@
 
             <div class="row " *ngIf="!showDonorDateBtns">
               <div class="col-12 d-flex-between">
-                <button mat-button matStepperPrevious>
+                <button mat-button matStepperPrevious class="btn ">
                   Review Questionnaire
                 </button>
-                <button  mat-button matStepperNext class="btn success-color">
+                <button mat-button matStepperNext class="btn success-color">
                   Proceed
                 </button>
               </div>
             </div>
           </mat-step>
-
-
         </mat-horizontal-stepper>
-        <div *ngIf="showDonorDateBtns">
-          <button  mat-button matStepperPrevious class="btn " (click)="showDonorDateBtnsHandler(false)">Review Questionnaire</button>
-          <button mat-button matStepperNext class="btn success-color" (click)="showDonorDateBtnsHandler(true)">Proceed</button>
+        <div *ngIf="showDonorDateBtns" class=" d-flex-between">
+          <button
+            mat-button
+            matStepperPrevious
+            class="btn "
+            (click)="showDonorDateBtnsHandler(false)"
+          >
+            Review Questionnaire
+          </button>
+          <button
+            mat-button
+            matStepperNext
+            class="btn success-color"
+            (click)="showDonorDateBtnsHandler(true)"
+          >
+            Proceed
+          </button>
         </div>
       </div>
     </mat-step>
@@ -251,94 +273,23 @@
     <mat-step>
       <ng-template matStepLabel>Confirm Examination</ng-template>
       <div class="step three">
-       
         <app-infoTable [list]="list"></app-infoTable>
-      
       </div>
       <div class="text-center">
         <app-button-icon
-        title="Confirm for Phlebotomy"
-        (click)="submitEvent()"
-        customClass="success-color"
-      ></app-button-icon>
-      <app-button-icon
-      title="Defer"
-      (click)="submitEvent()"
-      customClass="success-color"
-    ></app-button-icon>
+          title="Confirm for Phlebotomy"
+          (click)="submitEvent()"
+          customClass="success-color"
+        ></app-button-icon>
+        <app-button-icon
+          title="Defer"
+          (click)="openInputDialog()"
+          customClass="success-color"
+        ></app-button-icon>
       </div>
     </mat-step>
     <!-- -------------------- 3 end------------------- -->
   </mat-horizontal-stepper>
 
-  <!-- <ng-container *ngIf="!loading">
-    <div class="tabelContainer">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>Name</th>
-            <th>Image</th>
-            <th>ID Number</th>
-            <th>Phone</th>
-            <th>Generate Barcode</th>
-            <th>Barcode</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            *ngFor="
-              let data of mockData
-                | paginate
-                  : {
-                      itemsPerPage: 10,
-                      currentPage: page,
-                      totalItems: totalItems
-                    };
-              let i = index
-            "
-            style="cursor: pointer"
-          >
-            <td>{{ i + 1 }}</td>
-            <td>{{ data.name }}</td>
-            <td>{{ data.emirateId }}</td>
-            <td>{{ data.mobile }}</td>
-            <td>+2010000220808</td>
-            <td>
-              <button (click)="openDialogBarCode(data)" class="btn">
-                <i class="fas fa-print"></i>
-              </button>
-            </td>
-            <td>
-              <img
-                src="https://www.pngplay.com/wp-content/uploads/2/Barcode-Transparent-PNG.png"
-                height="100px"
-              />
-            </td>
 
-            <td>Pending</td>
-            <td>
-              <button mat-icon-button [matMenuTriggerFor]="menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="approveStudent(data.id)">
-                  <mat-icon>done</mat-icon>
-                  <span>{{ "Approve" | translate }}</span>
-                </button>
-              </mat-menu>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <pagination-controls
-      [previousLabel]="'Preview' | translate"
-      [nextLabel]="'Next' | translate"
-      (pageChange)="getPage($event)"
-    >
-    </pagination-controls>
-  </ng-container> -->
 </div>

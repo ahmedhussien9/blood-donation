@@ -28,7 +28,7 @@ export class SidebarService {
         en: 'Home'
       },
       route: 'dash/home-reports',
-      roles: []
+      roles: ['reciptionest','cbc','phlebotomy','donor']
     },
     {
       icon: ICONS.contract,
@@ -37,7 +37,7 @@ export class SidebarService {
         en: 'Queue'
       },
       route: 'dash/queue',
-      roles: []
+      roles:  ['reciptionest']
     },
     {
       icon: ICONS.contract,
@@ -46,7 +46,7 @@ export class SidebarService {
         en: 'Campaigns'
       },
       route: 'dash/campaigns',
-      roles: []
+      roles:  ['reciptionest']
     },
 
     {
@@ -56,17 +56,17 @@ export class SidebarService {
         en: 'Donor CBC Test'
       },
       route: 'dash/cpc',
-      roles: []
+      roles:  ['cbc']
     },
     {
       icon: ICONS.question,
       nameDictionary: {
         ar: 'الدكتور',
-       feature/doctorWizerd
+
         en: 'Donor Interview'
       },
       route: 'dash/doctor',
-      roles: []
+      roles: ['donor'] 
     },
     {
       icon: ICONS.newspaper,
@@ -75,7 +75,7 @@ export class SidebarService {
         en: 'Donor Announcements '
       },
       route: 'dash/announcements',
-      roles: []
+      roles: ['donor'] 
     },
     {
       icon: ICONS.chalkboard,
@@ -84,7 +84,7 @@ export class SidebarService {
         en: 'Phlebotomy  Dashboard'
       },
       route: 'dash/phlebotomy-dashboard',
-      roles: []
+      roles: ['phlebotomy'] 
     },
     {
       icon: ICONS.fa_heartbeat,
@@ -93,7 +93,7 @@ export class SidebarService {
         en: 'Blood Collection'
       },
       route: 'dash/blood-collection',
-      roles: []
+      roles:  ['phlebotomy'] 
     }
   ];
 

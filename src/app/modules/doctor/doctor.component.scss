@@ -145,6 +145,9 @@ table {
   .signature {
     display: flex;
     margin: 15px;
+    flex-direction: column;
+    align-items: center;
+    max-width: 200px;
     img {
       width: 150px;
     }

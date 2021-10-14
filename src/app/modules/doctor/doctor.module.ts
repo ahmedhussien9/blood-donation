@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from 'src/app/shared/shared.module';
-import { DoctorComponent } from './doctor.component';
+import { DoctorComponent, InputDialogPopup } from './doctor.component';
 import { DoctorRoutingModule } from './doctor-routing.module';
 
 
 @NgModule({
   declarations: [
     DoctorComponent,
+    InputDialogPopup
     
   ],
   imports: [
