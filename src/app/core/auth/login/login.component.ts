@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   showPassword = false;
   formGroup: FormGroup;
   lang = localStorage.getItem("LOCALIZE_DEFAULT_LANGUAGE");
-  bgPhoto = `./assets/images/banner.png`;
+  bgPhoto = `https://www.parkrapidsenterprise.com/incoming/7102655-3a5emi-071021.N.PRE.StockBloodDonation.jpg/alternates/BASE_LANDSCAPE/071021.N.PRE.StockBloodDonation.jpg`;
   loading = false;
   constructor(
     private fb: FormBuilder,
