@@ -28,7 +28,7 @@ export class SidebarService {
         en: 'Home'
       },
       route: 'dash/home-reports',
-      roles: ['reciptionest','cbc','phlebotomy','donor']
+      roles: ['receptionist','cbc','phlebotomy','donor']
     },
     {
       icon: ICONS.contract,
@@ -37,7 +37,7 @@ export class SidebarService {
         en: 'Queue'
       },
       route: 'dash/queue',
-      roles:  ['reciptionest']
+      roles:  ['receptionist']
     },
     {
       icon: ICONS.contract,
@@ -46,7 +46,7 @@ export class SidebarService {
         en: 'Campaigns'
       },
       route: 'dash/campaigns',
-      roles:  ['reciptionest']
+      roles:  ['receptionist']
     },
 
     {

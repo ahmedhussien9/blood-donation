@@ -32,35 +32,35 @@ export class PhlebotomyDashboardComponent implements OnInit {
       number: '8725363',
       donorDetails: 'View',
       progress: [
-        { key: 'Receptionist', value: true },
+        { key: 'receptionist', value: true },
         { key: 'CBC', value: true },
         { key: "Dr's Room", value: true },
         { key: 'Phlebotomy', value: true },
         { key: 'Done', value: true }
       ],
-      statusProgress: 'Stopped',
-      reason: 'Fainted'
+      statusProgress: 'Completed',
+      reason: ''
     },
     {
       id: 1,
       number: '8725363',
       donorDetails: 'View',
       progress: [
-        { key: 'Receptionist', value: true },
-        { key: 'CBC', value: false },
+        { key: 'receptionist', value: true },
+        { key: 'CBC', value: true },
         { key: "Dr's Room", value: false },
         { key: 'Phlebotomy', value: false },
         { key: 'Done', value: false }
       ],
-      statusProgress: 'Stopped',
-      reason: 'Fainted'
+      statusProgress: 'Deferred',
+      reason: 'Anemia – needs treatment'
     },
     {
       id: 1,
       number: '8725363',
       donorDetails: 'View',
       progress: [
-        { key: 'Receptionist', value: true },
+        { key: 'receptionist', value: true },
         { key: 'CBC', value: true },
         { key: "Dr's Room", value: true },
         { key: 'Phlebotomy', value: false },
@@ -68,6 +68,20 @@ export class PhlebotomyDashboardComponent implements OnInit {
       ],
       statusProgress: 'Stopped',
       reason: 'Fainted'
+    },
+    {
+      id: 1,
+      number: '8963524',
+      donorDetails: 'View',
+      progress: [
+        { key: 'receptionist', value: true },
+        { key: 'CBC', value: false },
+        { key: "Dr's Room", value: false },
+        { key: 'Phlebotomy', value: false },
+        { key: 'Done', value: false }
+      ],
+      statusProgress: 'Ongoing',
+      reason: ''
     }
   ];
   isLinear = false;
