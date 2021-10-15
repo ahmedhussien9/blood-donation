@@ -2,23 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CpcComponent } from './cpc.component';
-import { CpcRoutingModule } from './cpc-routing.module';
+import { CbcComponent } from './cbc.component';
+import { CbcRoutingModule } from './cbc-routing.module';
 import { SignatureComponent } from './signature/signature.component';
 import { SignaturePadModule } from 'angular2-signaturepad';
 
 
 @NgModule({
   declarations: [
-    CpcComponent,
+    CbcComponent,
     SignatureComponent,
     
   ],
   imports: [
     CommonModule,
-    CpcRoutingModule,
+    CbcRoutingModule,
     SharedModule,
     SignaturePadModule
   ]
 })
-export class CpcModule { }
+export class CbcModule { }

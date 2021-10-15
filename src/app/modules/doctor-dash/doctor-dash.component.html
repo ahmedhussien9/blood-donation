@@ -1,0 +1,52 @@
+<div class="reports">
+    <div class="welcome-container">
+      <div class="user-name">
+        <h1>Dashboard</h1>
+        <p>Tuesday, 19 October, 2021</p>
+      </div>
+      <div class="image">
+        <img [src]="'./assets/images/welcome-image.jpg'" class="img-fluid" />
+      </div>
+    </div>
+  
+    <div class="charts-container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="dounts-chart">
+            <p>chart for confirmed for phlebotomy vs deferred</p>
+            <div >
+              <canvas #donut width="800"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dounts-chart">
+                <p>Reasons for deferral </p>
+                <div >
+                    <div >
+                        <canvas width="900" height="300" #mychart></canvas>
+                      </div>
+                </div>
+              </div>
+            
+         
+          <!-- <div class="dounts-chart">
+            <p>Chart for Questionnaire</p>
+            <div >
+              <canvas #cbcPieChart width="800"></canvas>
+            </div>
+          </div> -->
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="charts">
+      
+          <div class="bar-chart">
+            <canvas width="700" height="250" #barChart></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

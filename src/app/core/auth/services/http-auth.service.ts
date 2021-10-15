@@ -20,14 +20,13 @@ export class HttpAuthService {
   public isUserOperationState = this.isUserOperationSource.asObservable();
   public userWithRoles = new BehaviorSubject<any>(null);
 
-  
   USERS = [
-    { email: 'reciptionest', roles: ['home-reports', 'queue', 'campaigns'] },
+    { email: 'receptionist', roles: ['home-reports', 'queue', 'campaigns'] },
     { email: 'cbc', roles: ['home-reports', 'cpc'] },
     { email: 'donor', roles: ['home-reports', 'doctor', 'announcements'] },
     {
       email: 'phlebotomy',
-      roles: ['home-reports', 'phlebotomy-dashboard', 'blood-collection']
+      roles: ['home-reports', 'phlebotomy-dash', 'blood-collection']
     }
   ];
 
@@ -84,16 +83,17 @@ export class HttpAuthService {
     return userData['roles'][0];
   }
 
-  public logOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userWithRoles');
-    window.location.reload();
+  async logOut() {
+    await localStorage.removeItem('token');
+    await localStorage.removeItem('userWithRoles');
+    await this.router.navigate(['/auth/login']);
+    await window.location.reload();
   }
 
   simulateLocalLogin(email) {
     let user = this.USERS.find(user => user.email === email);
     if (user) {
-      this.userWithRoles.next(user)
+      this.userWithRoles.next(user);
       localStorage.setItem('userWithRoles', JSON.stringify(user));
       this.router.navigate(['/dash/home-reports']);
     } else return alert('no user found !!');
