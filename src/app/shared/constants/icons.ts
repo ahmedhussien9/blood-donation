@@ -14,5 +14,6 @@ export const ICONS = {
   newspaper: 'far fa-newspaper',
   question: 'fas fa-question',
   fa_heartbeat: 'fas fa-heartbeat',
-  chalkboard: 'fas fa-chalkboard-teacher'
+  chalkboard: 'fas fa-chalkboard-teacher',
+  fa_columns: 'fas fa-columns',
 };

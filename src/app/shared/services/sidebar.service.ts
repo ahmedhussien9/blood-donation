@@ -21,6 +21,35 @@ export class SidebarService {
   isFilterOpen = new Subject();
 
   navItems: NavItem[] = [
+  
+    
+    {
+      icon: ICONS.chalkboard,
+      nameDictionary: {
+        ar: 'لوحة تحكم',
+        en: 'Dashboard'
+      },
+      route: 'dash/receptionist-dash',
+      roles: ['receptionist'] 
+    },
+    {
+      icon: ICONS.chalkboard,
+      nameDictionary: {
+        ar: 'لوحة تحكم',
+        en: 'Dashboard'
+      },
+      route: 'dash/cpc-dash',
+      roles: ['cbc'] 
+    },
+    {
+      icon: ICONS.chalkboard,
+      nameDictionary: {
+        ar: 'لوحة تحكم',
+        en: 'Dashboard'
+      },
+      route: 'dash/doctor-dash',
+      roles: ['donor'] 
+    },
     {
       icon: ICONS.home,
       nameDictionary: {
@@ -28,7 +57,7 @@ export class SidebarService {
         en: 'Home'
       },
       route: 'dash/home-reports',
-      roles: ['receptionist','cbc','phlebotomy','donor']
+      roles: []
     },
     {
       icon: ICONS.contract,
@@ -58,6 +87,8 @@ export class SidebarService {
       route: 'dash/cpc',
       roles:  ['cbc']
     },
+    
+   
     {
       icon: ICONS.question,
       nameDictionary: {
@@ -67,6 +98,7 @@ export class SidebarService {
       route: 'dash/doctor',
       roles: ['donor'] 
     },
+   
     {
       icon: ICONS.newspaper,
       nameDictionary: {
@@ -80,9 +112,9 @@ export class SidebarService {
       icon: ICONS.chalkboard,
       nameDictionary: {
         ar: 'لوحة معلومات الفصد',
-        en: 'Phlebotomy  Dashboard'
+        en: 'Dashboard'
       },
-      route: 'dash/phlebotomy-dashboard',
+      route: 'dash/phlebotomy-dash',
       roles: ['phlebotomy'] 
     },
     {

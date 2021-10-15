@@ -26,7 +26,7 @@ export class HttpAuthService {
     { email: 'donor', roles: ['home-reports', 'doctor', 'announcements'] },
     {
       email: 'phlebotomy',
-      roles: ['home-reports', 'phlebotomy-dashboard', 'blood-collection']
+      roles: ['home-reports', 'phlebotomy-dash', 'blood-collection']
     }
   ];
 

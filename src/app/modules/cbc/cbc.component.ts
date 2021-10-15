@@ -13,10 +13,10 @@ export interface DialogData {
 
 @Component({
   selector: 'app-doctor',
-  templateUrl: './cpc.component.html',
-  styleUrls: ['./cpc.component.scss']
+  templateUrl: './cbc.component.html',
+  styleUrls: ['./cbc.component.scss']
 })
-export class CpcComponent implements OnInit {
+export class CbcComponent implements OnInit {
   students: StudentI[];
   loading: boolean = false;
   page: number = 1;
