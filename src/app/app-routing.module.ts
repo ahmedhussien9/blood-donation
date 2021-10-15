@@ -94,7 +94,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'dash',
+    redirectTo: 'auth',
     pathMatch: 'full',
   },
 ];
