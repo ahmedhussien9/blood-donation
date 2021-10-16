@@ -74,7 +74,7 @@
 }
 
 .charts-container {
-   
+   background: white;
     gap: 15px;
     margin: 2rem 0rem;
     .charts {
@@ -114,3 +114,45 @@
         }
     }
 }
+.tabelContainer {
+    margin: 1rem 0rem;
+    background: white;
+  
+    padding: 19px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .progress-bar-table{
+    background: linear-gradient(
+      90deg, rgb(202 223 248 / 30%) 2%, rgb(193 193 193 / 28%) 99%);
+          padding: 5px 10px;
+          border-radius: 10px;
+          /* color: #2b6060; */
+          display: flex;
+          flex-direction: row;
+          min-width: 566px;
+          justify-content: space-around;
+        
+      
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+  
+  

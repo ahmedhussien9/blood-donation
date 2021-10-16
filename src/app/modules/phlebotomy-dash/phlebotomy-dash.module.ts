@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PhlebotomyDashboardRoutingModule } from './phlebotomy-dash-routing.module';
-import { PhlebotomyDashboardComponent } from './phlebotomy-dash.component';
+import { DonorDetailsComponent, PhlebotomyDashboardComponent } from './phlebotomy-dash.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-   PhlebotomyDashboardComponent
+   PhlebotomyDashboardComponent,
+   DonorDetailsComponent
   ],
   imports: [
     CommonModule,
-   PhlebotomyDashboardRoutingModule
+   PhlebotomyDashboardRoutingModule,
+   SharedModule
   ]
 })
 export class PhlebotomyDashboardModule { }

@@ -266,7 +266,7 @@ export class PhlebotomyDashboardComponent implements OnInit {
           borderWidth: 3,
           hoverBackgroundColor: '#7f53ac',
           hoverBorderColor: '#647dee',
-          data: [10, 15, 30, 20, 25,100]
+          data: [10, 15, 30, 20, 25 ]
         }
       ]
     };
