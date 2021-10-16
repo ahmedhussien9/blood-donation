@@ -1,19 +1,111 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, Optional, ViewChild } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as Chart from 'chart.js';
+import { StudentI } from 'src/app/shared/models/students.model';
 
+
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 @Component({
   selector: 'app-phlebotomy-dash',
   templateUrl: './phlebotomy-dash.component.html',
   styleUrls: ['./phlebotomy-dash.component.scss']
 })
+
 export class PhlebotomyDashboardComponent implements OnInit {
+  animal: string;
+  name: string;
+  students: StudentI[];
+  loading: boolean = false;
+  page: number = 1;
+  totalItems: number;
+  formGroup: FormGroup;
+  downloadlinkIndex = [];
+  lang = localStorage.getItem('LOCALIZE_DEFAULT_LANGUAGE');
+  selected: { startDate: Date; endDate: Date };
+  getRequests = [];
+  showDonorDateBtns = false;
   @ViewChild('donut', { static: false }) donut: ElementRef;
   @ViewChild('cbcPieChart', { static: false }) cbcPieChart: ElementRef;
 
   @ViewChild('mychart', { static: false }) mychart: ElementRef;
   @ViewChild('barChart', { static: false }) barChart: ElementRef;
+  mockData = [
+    {
+      id: 1,
+      number: '8725363',
+      donorDetails: 'View',
+      progress: [
+        { key: 'Receptionist', value: true },
+        { key: 'CBC', value: true },
+        { key: "Dr's Room", value: true },
+        { key: 'Phlebotomy', value: true },
+        { key: 'Done', value: true }
+      ],
+      statusProgress: 'Stopped',
+      reason: 'Fainted'
+    },
+    {
+      id: 1,
+      number: '8725363',
+      donorDetails: 'View',
+      progress: [
+        { key: 'Receptionist', value: true },
+        { key: 'CBC', value: false },
+        { key: "Dr's Room", value: false },
+        { key: 'Phlebotomy', value: false },
+        { key: 'Done', value: false }
+      ],
+      statusProgress: 'Stopped',
+      reason: 'Fainted'
+    },
+    {
+      id: 1,
+      number: '8725363',
+      donorDetails: 'View',
+      progress: [
+        { key: 'Receptionist', value: true },
+        { key: 'CBC', value: true },
+        { key: "Dr's Room", value: true },
+        { key: 'Phlebotomy', value: false },
+        { key: 'Done', value: false }
+      ],
+      statusProgress: 'Stopped',
+      reason: 'Fainted'
+    }
+  ];
+  list = [
+    { key: 'Donor Name', value: 'Hammad Salem Naser' },
+    { key: 'Donor ID', value: '784-1234-1234567-1' },
+    { key: 'Donor Number', value: '9876623' }
+  ];
+
+  list2 = [
+    { key: 'Blood Group', value: 'Hammad Salem Naser' },
+    { key: 'Collection Date', value: '784-1234-1234567-1' },
+    { key: 'Expires', value: '9876623' },
+    { key: 'Unit Numbert', value: '7/10/21 11:30 AM' }
+  ];
+
+  list3 = [
+    { key: 'Donor Name', value: 'Hammad Salem Naser' },
+    { key: 'Blood Group', value: 'AB-' },
+    { key: 'Full Name', value: 'Bruno Den' },
+    { key: 'Gender', value: 'Male' },
+    { key: 'DOB', value: '07/05/22' },
+    { key: 'Weight', value: '75 Kgs' },
+    { key: 'Address', value: 'business bay, sky towers, 12th floor' },
+    { key: 'Contact', value: '+97156437624' },
+    { key: 'Blood Quantity', value: '360' },
+    { key: 'Collection Date', value: ': 07/10/21' }
+  ];
   ngOnInit() {}
-  constructor() {}
+  constructor(    @Optional() public dialogRef: MatDialog,
+  ) {}
 
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
@@ -24,6 +116,16 @@ export class PhlebotomyDashboardComponent implements OnInit {
     this.renderBarChart();
   }
 
+  openDonorDialog(): void {
+    const dialogRef = this.dialogRef.open(DonorDetailsComponent, {
+      data: { list: this.list3 }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
   renderDounts() {
     let donutCtx = this.donut.nativeElement.getContext('2d');
     // let cbcPieChartCtx = this.cbcPieChart.nativeElement.getContext('2d');
@@ -206,4 +308,20 @@ export class PhlebotomyDashboardComponent implements OnInit {
       ...options
     });
   }
+}
+@Component({
+  selector: 'dialog-content-example-dialog',
+  templateUrl: './donorDetails.html'
+})
+export class DonorDetailsComponent {
+  dataList = [];
+  constructor(public dialogRef: MatDialogRef<DonorDetailsComponent>,@Inject(MAT_DIALOG_DATA) public data: DialogData) {
+   this.dataList = data['list']
+
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }
