@@ -91,7 +91,9 @@ export class HttpAuthService {
   }
 
   simulateLocalLogin(email) {
+    console.log();
     let user = this.USERS.find((user) => user.email === email);
+    console.log(user, email);
     switch (user.email) {
       case 'cbc':
         this.cbcUser(user);
@@ -99,7 +101,7 @@ export class HttpAuthService {
       case 'receptionist':
         this.receptionistUser(user);
         break;
-      case 'donor':
+      case 'doctor':
         this.doctorUser(user);
         break;
       case 'phlebotomy':
@@ -123,12 +125,12 @@ export class HttpAuthService {
 
   private cbcUser(user) {
     this.setUserRoles(user);
-    this.router.navigate(['/dash/cpc-dash']);
+    this.router.navigate(['/dash', 'cbc-dash']);
   }
 
   private doctorUser(user) {
     this.setUserRoles(user);
-    this.router.navigate(['/dash/doctor-dash']);
+    this.router.navigate(['/dash', 'doctor-dash']);
   }
 
   private setUserRoles(user) {
