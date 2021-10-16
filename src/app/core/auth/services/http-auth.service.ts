@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HttpAuthService {
   private baseUrl = environment.baseUrl;
@@ -26,8 +26,8 @@ export class HttpAuthService {
     { email: 'donor', roles: ['home-reports', 'doctor', 'announcements'] },
     {
       email: 'phlebotomy',
-      roles: ['home-reports', 'phlebotomy-dash', 'blood-collection']
-    }
+      roles: ['home-reports', 'phlebotomy-dash', 'blood-collection'],
+    },
   ];
 
   constructor(
@@ -41,13 +41,13 @@ export class HttpAuthService {
     headers.append('Content-Type', 'multipart/form-data');
     return this.httpClient.post(`${this.baseUrl}register`, body, {
       observe: 'response',
-      headers: headers
+      headers: headers,
     });
   }
 
   loginApi(body) {
     return this.httpClient.post(`${this.baseUrl}login`, body, {
-      observe: 'response'
+      observe: 'response',
     });
   }
 
@@ -70,7 +70,7 @@ export class HttpAuthService {
   }
 
   isLoggedIn() {
-    this.tokenSubjectData.subscribe(data => {
+    this.tokenSubjectData.subscribe((data) => {
       return data;
     });
   }
@@ -91,27 +91,66 @@ export class HttpAuthService {
   }
 
   simulateLocalLogin(email) {
-    let user = this.USERS.find(user => user.email === email);
-    if (user) {
-      this.userWithRoles.next(user);
-      localStorage.setItem('userWithRoles', JSON.stringify(user));
-      this.router.navigate(['/dash/home-reports']);
-    } else return alert('no user found !!');
+    let user = this.USERS.find((user) => user.email === email);
+    switch (user.email) {
+      case 'cbc':
+        this.cbcUser(user);
+        break;
+      case 'receptionist':
+        this.receptionistUser(user);
+        break;
+      case 'donor':
+        this.doctorUser(user);
+        break;
+      case 'phlebotomy':
+        this.phlebotomytUser(user);
+        break;
+      default:
+        alert('no user found !!');
+        break;
+    }
+  }
+
+  private phlebotomytUser(user) {
+    this.setUserRoles(user);
+    this.router.navigate(['/dash/phlebotomy-dash']);
+  }
+
+  private receptionistUser(user) {
+    this.setUserRoles(user);
+    this.router.navigate(['/dash/receptionist-dash']);
+  }
+
+  private cbcUser(user) {
+    this.setUserRoles(user);
+    this.router.navigate(['/dash/cpc-dash']);
+  }
+
+  private doctorUser(user) {
+    this.setUserRoles(user);
+    this.router.navigate(['/dash/doctor-dash']);
+  }
+
+  private setUserRoles(user) {
+    this.userWithRoles.next(user);
+    localStorage.setItem('userWithRoles', JSON.stringify(user));
   }
 
   isAuthorized(allowedRoles: string[]): boolean {
     if (allowedRoles == null || allowedRoles.length === 0) {
       return true;
     }
+
     const token = localStorage.getItem('token');
     const decodeToken = this.jwtHelperService.decodeToken(token);
+
     if (!decodeToken && token) {
       this.router.navigate(['/auth']);
       return false;
     }
 
     const roles = decodeToken['privileges'];
-    const isFoundedRole = allowedRoles.some(al => roles.includes(al));
+    const isFoundedRole = allowedRoles.some((al) => roles.includes(al));
     return isFoundedRole;
   }
 }
