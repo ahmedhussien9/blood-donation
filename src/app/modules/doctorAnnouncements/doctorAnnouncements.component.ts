@@ -26,25 +26,17 @@ export class DoctorAnnouncementsComponent implements OnInit {
       title: 'Urgent Case: Serious Accident Condition',
       bloodType: 'B+',
       phone: '+98985656555',
-      date: '28-11-2021 to 31-12-2021',
+      date: '06-10-21',
       organizer: 'EHS Hospital'  ,
       requirements: 'Must be in good health and feeling very well. Must weight at least 110 lbs.      '
     },
     {
-      title: 'Urgent Case: Serious Accident Condition',
-      bloodType: 'B+',
+      title: 'Cancer patient: for surgery',
+      bloodType: 'AB-',
       phone: '+98985656555',
-      date: '28-11-2021 to 31-12-2021',
-      organizer: 'EHS Hospital'  ,
-      requirements: 'Must be in good health and feeling very well. Must weight at least 110 lbs.      '
-    },
-    {
-      title: 'Urgent Case: Serious Accident Condition',
-      bloodType: 'B+',
-      phone: '+98985656555',
-      date: '28-11-2021 to 31-12-2021',
-      organizer: 'EHS Hospital'  ,
-      requirements: 'Must be in good health and feeling very well. Must weight at least 110 lbs.      '
+      date: '07-10-21',
+      organizer: 'City Hospital'  ,
+      requirements: 'Weight at least 50 kgs, no alcohol intake in 24hrs prior to donation, light should be taken before donation, be in good health, must be 18 years old and must have at least 3 month interval than the last donation      '
     }
   ];
   constructor(

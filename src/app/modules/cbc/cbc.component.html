@@ -64,7 +64,7 @@
                     >
                       Confirm
                     </button>
-                    <button mat-button class="btn ">
+                    <button mat-button class="btn "  matStepperNext>
                       Modify
                     </button>
                   </div>
@@ -121,7 +121,7 @@
                     >
                       Confirm
                     </button>
-                    <button mat-button class="btn ">
+                    <button mat-button class="btn "  matStepperNext>
                       Modify
                     </button>
                   </div>
@@ -178,7 +178,7 @@
                     >
                       Confirm
                     </button>
-                    <button mat-button class="btn ">
+                    <button mat-button class="btn "  matStepperNext>
                       Modify
                     </button>
                   </div>
@@ -237,7 +237,7 @@
             </div>
           </mat-step>
         </mat-horizontal-stepper>
-        <div *ngIf="showDonorDateBtns" class="text-end">
+        <div  class="text-end">
           <button
             mat-button
             matStepperNext
@@ -308,10 +308,10 @@
     
       <div class="d-flex-between">
         <button mat-button matStepperPrevious class="btn">Back</button>
-        <app-button-icon *ngIf="nextDonor"
+        <app-button-icon *ngIf="nextDonor" 
           title="Next Donor"
-          (click)="submitEvent()"
-       
+          (click)="nextDonorHandler()"
+          
         ></app-button-icon>
       </div>
     </mat-step>

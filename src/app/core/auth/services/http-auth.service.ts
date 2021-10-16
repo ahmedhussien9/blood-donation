@@ -22,8 +22,8 @@ export class HttpAuthService {
 
   USERS = [
     { email: 'receptionist', roles: ['home-reports', 'queue', 'campaigns'] },
-    { email: 'cbc', roles: ['home-reports', 'cpc'] },
-    { email: 'donor', roles: ['home-reports', 'doctor', 'announcements'] },
+    { email: 'cbc', roles: ['home-reports', 'cbc'] },
+    { email: 'doctor', roles: ['home-reports', 'doctor', 'announcements'] },
     {
       email: 'phlebotomy',
       roles: ['home-reports', 'phlebotomy-dash', 'blood-collection']
@@ -93,9 +93,10 @@ export class HttpAuthService {
   simulateLocalLogin(email) {
     let user = this.USERS.find(user => user.email === email);
     if (user) {
+      
       this.userWithRoles.next(user);
       localStorage.setItem('userWithRoles', JSON.stringify(user));
-      this.router.navigate(['/dash/home-reports']);
+      this.router.navigate([`/dash/${email}-dash`]);
     } else return alert('no user found !!');
   }
 

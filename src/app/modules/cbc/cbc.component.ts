@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, OnInit, Optional, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { StudentI } from 'src/app/shared/models/students.model';
@@ -77,6 +78,8 @@ export class CbcComponent implements OnInit {
       nationality: 'United Arab Emirates'
     }
   ];
+  @ViewChild('stepper') private myStepper: MatStepper;
+
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -213,6 +216,9 @@ export class CbcComponent implements OnInit {
   }
   submit(){
     this.nextDonor = true
+  }
+  nextDonorHandler(){
+    this.myStepper.reset();
   }
   openSigntureComp(): void {
     const dialogRef = this.dialogRef.open(SignatureComponent, {

@@ -38,7 +38,7 @@ export class SidebarService {
         ar: 'لوحة تحكم',
         en: 'Dashboard'
       },
-      route: 'dash/cpc-dash',
+      route: 'dash/cbc-dash',
       roles: ['cbc'] 
     },
     {
@@ -48,7 +48,7 @@ export class SidebarService {
         en: 'Dashboard'
       },
       route: 'dash/doctor-dash',
-      roles: ['donor'] 
+      roles: ['doctor'] 
     },
     {
       icon: ICONS.home,
@@ -84,7 +84,7 @@ export class SidebarService {
         ar: 'اختبار CBC للمانحين',
         en: 'Donor CBC Test'
       },
-      route: 'dash/cpc',
+      route: 'dash/cbc',
       roles:  ['cbc']
     },
     
@@ -96,7 +96,7 @@ export class SidebarService {
         en: 'Donor Interview'
       },
       route: 'dash/doctor',
-      roles: ['donor'] 
+      roles: ['doctor'] 
     },
    
     {
@@ -106,7 +106,7 @@ export class SidebarService {
         en: 'Donor Announcements '
       },
       route: 'dash/announcements',
-      roles: ['donor'] 
+      roles: ['doctor'] 
     },
     {
       icon: ICONS.chalkboard,
