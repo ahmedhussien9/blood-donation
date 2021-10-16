@@ -44,7 +44,7 @@ const routes: Routes = [
       },
 
       {
-        path: 'cpc',
+        path: 'cbc',
         loadChildren: () =>
           import('./modules/cbc/cbc.module').then(m => m.CbcModule),
         data: {
@@ -53,7 +53,7 @@ const routes: Routes = [
       },
 
       {
-        path: 'cpc-dash',
+        path: 'cbc-dash',
         loadChildren: () =>
           import('./modules/cbc-dash/cbc-dash.module').then(
             m => m.CbcDashboardModule

@@ -22,8 +22,8 @@ export class HttpAuthService {
 
   USERS = [
     { email: 'receptionist', roles: ['home-reports', 'queue', 'campaigns'] },
-    { email: 'cbc', roles: ['home-reports', 'cpc'] },
-    { email: 'donor', roles: ['home-reports', 'doctor', 'announcements'] },
+    { email: 'cbc', roles: ['home-reports', 'cbc'] },
+    { email: 'doctor', roles: ['home-reports', 'doctor', 'announcements'] },
     {
       email: 'phlebotomy',
       roles: ['home-reports', 'phlebotomy-dash', 'blood-collection'],

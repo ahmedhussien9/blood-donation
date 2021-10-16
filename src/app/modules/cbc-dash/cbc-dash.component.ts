@@ -154,7 +154,7 @@ export class CbcDashboardComponent implements OnInit {
   renderBarChart() {
     let barCtx = this.barChart.nativeElement.getContext('2d');
     var data = {
-      labels: ['','High blood pressure', 'Low blood pressure', 'Hemoglobin', 'Infections', 'MOn Medicationay',''],
+      labels: ['','High blood pressure', 'Low blood pressure', 'Hemoglobin', 'Infections', 'On Medicationay',''],
 
       datasets: [
         {
